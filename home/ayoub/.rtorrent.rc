@@ -1,0 +1,2 @@
+# to go without IPv6 support
+bind=0.0.0.0

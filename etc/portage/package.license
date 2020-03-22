@@ -1,0 +1,6 @@
+# unrar
+app-arch/unrar unRAR
+# linux-firmware
+sys-kernel/linux-firmware linux-fw-redistributable no-source-code
+# intel-microcode
+sys-firmware/intel-microcode intel-ucode

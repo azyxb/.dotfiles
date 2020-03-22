@@ -1,0 +1,4 @@
+sys-apps/inxi ~amd64
+# supertuxkart
+games-action/supertuxkart ~amd64
+dev-libs/angelscript ~amd64

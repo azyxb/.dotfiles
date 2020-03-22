@@ -1,0 +1,113 @@
+# Misc
+media-libs/mesa -llvm 
+sys-devel/llvm gold -llvm_targets_AMDGPU -llvm_targets_BPF -llvm_targets_NVPTX -ncurses 
+sys-devel/clang -static-analyzer -llvm_targets_AMDGPU -llvm_targets_BPF -llvm_targets_NVPTX
+sys-kernel/gentoo-sources symlink # It is very utile
+dev-vcs/git -perl # pourquoi perl
+sys-boot/grub -fonts -themes -truetype -sdl # a minimal grub
+app-admin/sudo -sendmail
+app-misc/neofetch -X
+media-plugins/gst-plugins-meta ffmpeg
+x11-base/xorg-server -suid
+media-video/mpv X cli -lcms -xv -egl -lua -luajit -uchardet opengl
+dev-lang/lua -deprecated
+app-admin/conky ncurses -X -iconv -portmon
+app-text/xmlto -text
+app-text/zathura-meta pdf djvu cb 
+x11-misc/xaos X gtk threads
+
+# editors
+app-editors/nano minimal
+app-editors/vim -X
+app-editors/emacs xft X gtk -dbus -xmp -inotify libxml2 -alsa -gif -jpeg -png -sound -svg
+app-emacs/emacs-common-gentoo X
+
+# Awesome
+# required by x11-wm/awesome-4.2-r3::gentoo
+# required by awesome (argument)
+>=x11-libs/cairo-1.16.0-r3 X
+# required by x11-libs/libxkbcommon-0.9.1::gentoo[X]
+# required by x11-wm/awesome-4.2-r3::gentoo
+# required by awesome (argument)
+>=x11-libs/libxcb-1.13.1 xkb
+# required by x11-wm/awesome-4.2-r3::gentoo
+# required by awesome (argument)
+>=x11-libs/libxkbcommon-0.9.1 X
+# required by x11-wm/awesome-4.2-r3::gentoo
+# required by awesome (argument)
+media-gfx/imagemagick png
+
+# Firefox
+www-client/firefox -screenshot -clang -wifi -dbus 
+# required by www-client/firefox-68.4.2::gentoo
+# required by firefox (argument)
+>=media-libs/libpng-1.6.37 apng
+# required by www-client/firefox-68.4.2::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.7.0-r1 postproc
+# required by www-client/firefox-68.4.2::gentoo[system-sqlite]
+# required by firefox (argument)
+>=dev-db/sqlite-3.30.1 secure-delete
+# required by www-client/firefox-68.4.2::gentoo
+# required by firefox (argument)
+>=dev-lang/python-2.7.17:2.7 sqlite
+# required by www-client/firefox-68.4.2::gentoo
+# required by firefox (argument)
+>=dev-lang/python-3.7.5-r1 sqlite
+# required by media-libs/mesa-19.3.5::gentoo[libglvnd]
+# required by www-client/firefox-68.6.0-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libglvnd-1.3.1 X
+
+
+# Python
+dev-python/matplotlib gtk3 -wxwidgets
+# required by sci-libs/scipy
+dev-python/numpy lapack
+
+# GIMP
+media-gfx/gimp -alsa
+# required by media-gfx/gimp-2.10.14-r1::gentoo
+# required by gimp (argument)
+>=app-text/poppler-0.82.0 cairo
+# required by media-gfx/gimp-2.10.14-r1::gentoo
+# required by gimp (argument)
+>=media-libs/gegl-0.4.18 cairo
+
+# VirtualBox
+app-emulation/virtualbox qt5
+# required by app-emulation/virtualbox-5.2.32::gentoo[-headless]
+# required by virtualbox (argument)
+>=media-libs/libsdl-1.2.15-r9 X
+# required by dev-qt/qtcore-5.13.2-r2::gentoo
+# required by dev-qt/qtdbus-5.13.2::gentoo
+# required by dev-qt/qtgui-5.13.2::gentoo[dbus]
+# required by dev-qt/qtprintsupport-5.13.2::gentoo
+# required by app-emulation/virtualbox-5.2.32::gentoo[qt5,-headless]
+# required by virtualbox (argument)
+>=dev-libs/libpcre2-10.33-r1 pcre16
+
+# LaTeX
+app-text/texlive extra l10n_fr l10n_en music science publishers humanities graphics
+# required by dev-texlive/texlive-xetex-2019::gentoo
+# required by dev-texlive/texlive-formatsextra-2019::gentoo
+# required by app-text/texlive-2019-r1::gentoo[extra]
+# required by @selected
+# required by @world (argument)
+>=app-text/texlive-core-2019-r4 xetex
+# required by app-text/texlive-core-2019-r4::gentoo[xetex]
+# required by dev-texlive/texlive-xetex-2019::gentoo
+# required by dev-texlive/texlive-formatsextra-2019::gentoo
+# required by app-text/texlive-2019-r1::gentoo[extra]
+# required by @selected
+# required by @world (argument)
+>=media-libs/harfbuzz-2.6.4 icu
+# required by media-gfx/graphviz-2.42.3::gentoo
+# required by dev-python/pydot-1.4.1::gentoo
+# required by dev-tex/dot2tex-2.11.3::gentoo
+# required by dev-tex/dot2texi-3.0::gentoo
+# required by app-text/texlive-2019-r1::gentoo[graphics]
+# required by @selected
+# required by @world (argument)
+>=media-libs/gd-2.2.5-r2 truetype fontconfig
