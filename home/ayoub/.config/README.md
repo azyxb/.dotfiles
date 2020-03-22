@@ -1,4 +1,4 @@
-# dots ~/.* 
+# .config 
 <div align="center">
   <a href="http://badges.mit-license.org">
       <img alt="MIT Licence" src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" />
