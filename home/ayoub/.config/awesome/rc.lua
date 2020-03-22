@@ -767,7 +767,7 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     { rule = { class = "st" },
-      properties =  { floating = true },
+       properties =  { floating = true },
        callback = function (c)
        awful.placement.centered(c,nil)
        end
@@ -775,6 +775,7 @@ awful.rules.rules = {
     { rule = { class = "Firefox" },
        callback = function (c)
        c.border_width = "0"
+       awful.titlebar.hide(c)
        end
     },
     --{ rule = { class = "conky" },
@@ -825,7 +826,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -865,25 +866,30 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c, { height    = 10 }) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
+            ---awful.titlebar.widget.iconwidget(c),
+            awful.titlebar.widget.floatingbutton(c),
             { -- Title
                 align  = "center",
                 widget = awful.titlebar.widget.titlewidget(c)
             },
             buttons = buttons,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        { -- Middle
+            ---{ -- Title
+            ---    align  = "center",
+            ---    widget = awful.titlebar.widget.titlewidget(c)
+            ---},
+            buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
+            ---awful.titlebar.widget.floatingbutton (c),
+            ---awful.titlebar.widget.maximizedbutton(c),
+            ---awful.titlebar.widget.stickybutton   (c),
+            ---awful.titlebar.widget.ontopbutton    (c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },

@@ -16,8 +16,8 @@ local INC_VOLUME_CMD = 'amixer set Master 5%+'
 local DEC_VOLUME_CMD = 'amixer set Master 5%-'
 local TOG_VOLUME_CMD = 'amixer set Master toggle'
 
-local bar_color = "#6666ea"
-local mute_color = "#ff0000"
+local bar_color = "#54487A"
+local mute_color = "#FF0000"
 local background_color = "#e0e3e9"
 
 local volumebar_widget = wibox.widget {

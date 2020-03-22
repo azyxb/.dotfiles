@@ -137,6 +137,11 @@ theme.layout_cornerne = "/home/ayoub/.config/awesome/themes/mythe/layouts/corner
 theme.layout_cornersw = "/home/ayoub/.config/awesome/themes/mythe/layouts/cornersww.png"
 theme.layout_cornerse = "/home/ayoub/.config/awesome/themes/mythe/layouts/cornersew.png"
 
+-- Title bar colors
+theme.titlebar_bg_normal = "#61538D"
+---theme.titlebar_bg = "#1A0E19"
+theme.titlebar_bg_focus = "#54487A"
+
 -- Display the taglist squares
 theme.taglist_squares_sel = "/home/ayoub/.config/awesome/themes/mythe/layouts/square_sel.png"
 theme.taglist_squares_unsel  = "/home/ayoub/.config/awesome/themes/mythe/layouts/square_unsel.png"
