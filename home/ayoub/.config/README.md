@@ -10,7 +10,7 @@
 
 ---
 
-![screen](https://raw.githubusercontent.com/azyxb/dots/master/scrot.png)
+![screen](https://raw.githubusercontent.com/azyxb/.dotfiles/master/home/ayoub/Pictures/scrot.png)
 
 ---
 
