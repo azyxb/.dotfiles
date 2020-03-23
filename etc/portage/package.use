@@ -8,6 +8,7 @@ sys-boot/grub -fonts -themes -truetype -sdl # a minimal grub
 app-admin/sudo -sendmail
 app-misc/neofetch -X
 media-plugins/gst-plugins-meta ffmpeg
+sys-apps/openrc -netifrc
 x11-base/xorg-server -suid
 media-video/mpv X cli -lcms -xv -egl -lua -luajit -uchardet opengl
 dev-lang/lua -deprecated

@@ -39,7 +39,6 @@ media-sound/alsa-utils
 media-video/guvcview
 media-video/mpv
 net-misc/dhcpcd
-net-misc/netifrc
 net-p2p/rtorrent
 net-print/hplip
 net-wireless/iw
