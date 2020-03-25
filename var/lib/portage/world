@@ -11,6 +11,7 @@ app-emacs/python-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
 app-misc/ranger
+app-misc/screen
 app-misc/sl
 app-portage/eix
 app-portage/genlop
@@ -38,6 +39,7 @@ media-gfx/sxiv
 media-sound/alsa-utils
 media-video/guvcview
 media-video/mpv
+net-irc/weechat
 net-misc/dhcpcd
 net-p2p/rtorrent
 net-print/hplip

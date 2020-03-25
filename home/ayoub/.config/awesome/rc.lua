@@ -24,7 +24,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup").widget
+---local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Volume, battery and brightness
 local volumebar_widget = require("volumebar-widget.volumebar")
 local brightness_widget = require("brightness-widget.brightness")
@@ -79,10 +79,10 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.max,
+    awful.layout.suit.fair,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
@@ -114,7 +114,7 @@ end
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end},
+   ---{ "hotkeys", function() return false, hotkeys_popup.show_help end},
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
@@ -547,8 +547,8 @@ globalkeys = gears.table.join(
             end
          end,
          {description = "toggle wibox", group = "awesome" }),
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome" }),
+    ---awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    ---          {description="show help", group="awesome" }),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag" }),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
