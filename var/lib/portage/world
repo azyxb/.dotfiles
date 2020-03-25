@@ -6,8 +6,6 @@ app-arch/unzip
 app-editors/nano
 app-editors/vim
 app-emacs/ebuild-mode
-app-emacs/nxml-gentoo-schemas
-app-emacs/python-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
 app-misc/ranger
