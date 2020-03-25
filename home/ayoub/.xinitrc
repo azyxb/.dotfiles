@@ -9,7 +9,7 @@
 #      |:|  |      \:\__\         |::/  /    \:\__\       \/__/      
 #      |:|  |       \/__/         /:/  /      \/__/                  
 #       \|__|                     \/__/                              
-#xcompmgr &
+xcompmgr &
 #conky &
 exec /usr/bin/awesome
 

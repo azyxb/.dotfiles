@@ -66,6 +66,7 @@ x11-base/xorg-server
 x11-drivers/xf86-video-intel
 x11-misc/slock
 x11-misc/xaos
+x11-misc/xcompmgr
 x11-plugins/vicious
 x11-terms/st
 x11-wm/awesome
