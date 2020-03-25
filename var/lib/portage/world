@@ -37,6 +37,7 @@ media-gfx/gimp
 media-gfx/scrot
 media-gfx/sxiv
 media-sound/alsa-utils
+media-sound/moc
 media-video/guvcview
 media-video/mpv
 net-irc/weechat
