@@ -54,6 +54,14 @@ alias conf="sudoedit /etc/portage/make.conf"
 # source
 alias so='source /home/ayoub/.zshrc'
 
+# dotfiles
+alias dotss="dotfiles status"
+alias dotsc="dotfiles commit -m 'Small change'"
+alias dotsa="dotfiles add "
+
+# 'rona
+alias rona="curl https://covid19tracker.xyz/fr"
+
 # Use a long listing format
 alias ll='ls -la'
 
