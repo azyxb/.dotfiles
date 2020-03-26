@@ -58,6 +58,7 @@ alias so='source /home/ayoub/.zshrc'
 alias dotss="dotfiles status"
 alias dotsc="dotfiles commit -m 'Small change'"
 alias dotsa="dotfiles add "
+alias dotsp="dotfiles push"
 
 # 'rona
 alias rona="curl https://covid19tracker.xyz/fr"
