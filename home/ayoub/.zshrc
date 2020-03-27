@@ -15,7 +15,8 @@
 #     \/__/         \/__/         \/__/      
 
 # Path to your zsh installation.
-export ZSH=$HOME/.zsh
+export ZSH=$HOME/.config/zsh
+export ZDOTDIR=$HOME/.config
 
 # History
 HISTFILE=~/.cache/zhistory
@@ -111,7 +112,7 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
 # Clear the screen of your clutter
-alias ccc="clear && ~/.aura.sh"
+alias ccc="clear && ~/Scripts/.aura.sh"
 alias clr="clear;ls;pwd"
 
 # Bonsai
@@ -151,10 +152,13 @@ alias infoo="/home/ayoub/Scripts/info.sh"
 alias moon="curl wttr.in/Moon"
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
+# SSD temperature
+alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
+
 # I mounted my usb like a real one
 alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
-alias mobilemount="mtpfs ~/AndroidDevice"
-alias moubileumount="fusermount -u ~/AndroidDevice"
+alias mobilemount="mtpfs ~/Documents/phone"
+alias moubileumount="fusermount -u ~/Documents/phone"
 
 # portage is great
 alias accio="sudo emerge"
@@ -258,9 +262,6 @@ ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/10
 
 # To change from nano to emacs 
 export EDITOR="emacs --no-window-system"
-
-# Completion
-autoload -U compinit && compinit
 
 # To change to vim in manpages
 ##export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""

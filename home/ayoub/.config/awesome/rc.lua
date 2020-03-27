@@ -766,19 +766,25 @@ root.keys(globalkeys)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-    { rule = { class = "st" },
-       properties =  { floating = true },
-       callback = function (c)
-       awful.placement.centered(c,nil)
-       end
-    },
+   { rule = { class = "st" },
+     properties =  { floating = true },
+     callback = function (c)
+	awful.placement.centered(c,nil)
+     end
+   },
     { rule = { class = "Firefox" },
-       callback = function (c)
-       c.border_width = "0"
-       awful.titlebar.hide(c)
-       end
+      callback = function (c)
+	 c.border_width = "0"
+	 awful.titlebar.hide(c)
+      end
     },
-    --{ rule = { class = "conky" },
+    { rule = { class = "Emacs" },
+      callback = function (c)
+	 c.border_width = "0"
+	 awful.titlebar.hide(c)
+      end
+    },
+ ---{ rule = { class = "conky" },
         --properties = { tag = "00", maximized_vertical = true, maximized_horizontal = true }
       --  properties = { tag = "00", fullscreen = true },
         --  callback = function(c)

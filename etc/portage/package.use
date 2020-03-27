@@ -7,22 +7,20 @@ media-sound/moc mad
 dev-vcs/git -perl # pourquoi perl
 sys-boot/grub -fonts -themes -truetype -sdl # a minimal grub
 app-admin/sudo -sendmail
-app-misc/neofetch -X
 media-plugins/gst-plugins-meta ffmpeg
 sys-apps/openrc -netifrc
 x11-base/xorg-server -suid
 media-video/mpv X cli -lcms -xv -egl -lua -luajit -uchardet opengl
 dev-lang/lua -deprecated
-app-admin/conky ncurses -X -iconv -portmon
 app-text/xmlto -text
 app-text/zathura-meta pdf djvu cb 
+sys-apps/smartmontools -daemon
 x11-misc/xaos X gtk threads
 
 # editors
 app-editors/nano minimal
-app-editors/vim -X
-app-editors/emacs xft X gtk -dbus -xmp -inotify libxml2 -alsa -gif -jpeg -png -sound -svg
-app-emacs/emacs-common-gentoo X
+app-editors/emacs X alsa gamesgif gtk imagemagick jpeg libxml2 png sound svg tiff xft xpm
+app-emacs/emacs-common-gentoo X games
 
 # Awesome
 # required by x11-wm/awesome-4.2-r3::gentoo
@@ -35,9 +33,6 @@ app-emacs/emacs-common-gentoo X
 # required by x11-wm/awesome-4.2-r3::gentoo
 # required by awesome (argument)
 >=x11-libs/libxkbcommon-0.9.1 X
-# required by x11-wm/awesome-4.2-r3::gentoo
-# required by awesome (argument)
-media-gfx/imagemagick png
 
 # Firefox
 www-client/firefox -screenshot -clang -wifi -dbus 
@@ -61,7 +56,6 @@ www-client/firefox -screenshot -clang -wifi -dbus
 # required by @selected
 # required by @world (argument)
 >=media-libs/libglvnd-1.3.1 X
-
 
 # Python
 dev-python/matplotlib gtk3 -wxwidgets

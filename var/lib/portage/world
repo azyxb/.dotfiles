@@ -1,10 +1,7 @@
-app-admin/hddtemp
 app-admin/sudo
 app-admin/sysklogd
-app-arch/unrar
 app-arch/unzip
 app-editors/nano
-app-editors/vim
 app-emacs/ebuild-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
@@ -27,6 +24,7 @@ dev-python/numpy
 dev-util/geany
 dev-vcs/git
 games-action/supertuxkart
+lxde-base/lxappearance
 media-fonts/dejavu
 media-fonts/dina
 media-fonts/eb-garamond
@@ -46,6 +44,7 @@ net-wireless/iw
 net-wireless/wpa_supplicant
 sci-libs/scipy
 sys-apps/inxi
+sys-apps/smartmontools
 sys-block/parted
 sys-boot/grub
 sys-devel/clang
@@ -55,7 +54,6 @@ sys-fs/fuse-exfat
 sys-fs/mtpfs
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
-sys-power/acpid
 sys-power/acpilight
 sys-process/htop
 www-client/firefox

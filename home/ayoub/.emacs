@@ -19,8 +19,7 @@
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (adwaita)))
- '(display-line-numbers-type (quote relative))
+ '(custom-enabled-themes (quote (sourcerer)))
  '(fringe-mode 0 nil (fringe))
  '(global-display-line-numbers-mode t)
  '(line-number-mode nil)
