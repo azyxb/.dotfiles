@@ -66,6 +66,9 @@ alias rona="curl https://covid19tracker.xyz/fr"
 # Use a long listing format
 alias ll='ls -la'
 
+# Cam
+alias cam="mpv av://v4l2:/dev/video0"
+
 # Turn off the screen and slock
 alias nox="xset dpms force off"
 

@@ -34,7 +34,7 @@ media-gfx/scrot
 media-gfx/sxiv
 media-sound/alsa-utils
 media-sound/moc
-media-video/guvcview
+media-tv/v4l-utils
 media-video/mpv
 net-irc/weechat
 net-misc/dhcpcd

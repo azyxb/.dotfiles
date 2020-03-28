@@ -15,7 +15,9 @@ dev-lang/lua -deprecated
 app-text/xmlto -text
 app-text/zathura-meta pdf djvu cb 
 sys-apps/smartmontools -daemon
+media-tv/v4l-utils -bpf
 x11-misc/xaos X gtk threads
+media-video/ffmpeg v4l
 
 # editors
 app-editors/nano minimal
