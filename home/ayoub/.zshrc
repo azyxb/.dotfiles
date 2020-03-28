@@ -280,8 +280,5 @@ ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/10
 # To change from nano to emacs 
 export EDITOR="emacs --no-window-system"
 
-# To change to vim in manpages
-##export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
-
 # Synatax
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh

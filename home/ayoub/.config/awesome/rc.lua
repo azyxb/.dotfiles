@@ -31,7 +31,7 @@ local brightness_widget = require("brightness-widget.brightness")
 local vicious = require("vicious")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+---require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -125,7 +125,6 @@ dev = {
     { "python", terminal .. " -e python" },
     { "lua", terminal .. " -e lua" },
     { "nano", terminal .. " -e nano" },
-    { "vim", terminal .. " -e vim" },
     { "emacs", "emacs" },
 }
 graphics = {
@@ -166,70 +165,69 @@ oportage = {
      { "p.use", terminal .. " -e sudoedit /etc/portage/package.use" },
  }
 conf = {
-     { "vim", terminal .. " -e vim /home/ayoub/.vimrc" },
-     { "geany", terminal .. " -e vim /home/ayoub/.config/geany/geany.conf" },
-     { "bashrc", terminal .. " -e vim /home/ayoub/.bashrc" },
-     { "Theme", terminal .. " -e vim /home/ayoub/.config/awesome/themes/mythe/theme.lua" },
-     { "zshrc", terminal .. " -e vim /home/ayoub/.zshrc" },
-     { "awesome", terminal .. " -e vim /home/ayoub/.config/awesome/rc.lua" },
+     { "geany", terminal .. " -e emacs /home/ayoub/.config/geany/geany.conf" },
+     { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
+     { "Theme", terminal .. " -e emacs /home/ayoub/.config/awesome/themes/mythe/theme.lua" },
+     { "zshrc", terminal .. " -e emacs /home/ayoub/.zshrc" },
+     { "awesome", terminal .. " -e emacs /home/ayoub/.config/awesome/rc.lua" },
      { "portage", oportage},
      
 }
 ghostss = {
     { "run", "/usr/bin/st -g 78x16 -e sh -c '/home/ayoub/Scripts/color-scripts/ghosts | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/ghosts" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/ghosts" },
           }
 Arch = {
     { "run", "/usr/bin/st -g 92x12 -e sh -c '/home/ayoub/Scripts/color-scripts/arch | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/arch" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/arch" },
           }
 DNA = {
     { "run", "/usr/bin/st -g 54x31 -e sh -c '/home/ayoub/Scripts/color-scripts/dna | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/dna" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/dna" },
 }
 PacMan = {
     { "run", "/usr/bin/st -g 98x21 -e sh -c '/home/ayoub/Scripts/color-scripts/pacman | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/pacman" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/pacman" },
 }
 Pipes = {
     { "run", "/usr/bin/st -g 78x16 -e sh -c '/home/ayoub/Scripts/color-scripts/pipes2 | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/pipes2" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/pipes2" },
 }
 Rally = {
     { "run", "/usr/bin/st -g 80x22 -e sh -c '/home/ayoub/Scripts/color-scripts/rally-x | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/rally-x" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/rally-x" },
 }
 TheBat = {
     { "run", "/usr/bin/st -g 90x15 -e sh -c '/home/ayoub/Scripts/color-scripts/thebat2 | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/thebat2" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/thebat2" },
 }
 illumina = {
     { "run", "/usr/bin/st -g 40x18 -e sh -c '/home/ayoub/Scripts/color-scripts/illumina | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/illumina" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/illumina" },
 }
 spectrum = {
     { "run", "/usr/bin/st -g 40x18 -e sh -c '/home/ayoub/Scripts/color-scripts/spectrum | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/spectrum" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/spectrum" },
 }
 dotx = {
     { "run", "/usr/bin/st -g 48x10 -e sh -c '/home/ayoub/Scripts/color-scripts/dotx | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/dotx" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/dotx" },
 }
 colorwheel = {
     { "run", "/usr/bin/st -g 20x7 -e sh -c '/home/ayoub/Scripts/color-scripts/colorwheel | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/colorwheel" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/colorwheel" },
 }
 crunch = {
     { "run", "/usr/bin/st -g 73x10 -e sh -c '/home/ayoub/Scripts/color-scripts/crunch | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/crunch" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/crunch" },
 }
 alpha = {
     { "run", "/usr/bin/st -g 60x7 -e sh -c '/home/ayoub/Scripts/color-scripts/alpha | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/alpha" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/alpha" },
 }
 colorview = {
     { "run", "/usr/bin/st -g 85x30 -e sh -c '/home/ayoub/Scripts/color-scripts/colorview | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e vim /home/ayoub/Scripts/color-scripts/colorview" },
+    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/colorview" },
 }
 colorscriptss = {
     { "ghosts", ghostss },
@@ -367,7 +365,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- gears.wallpaper.tiled("/home/ayoub/Pictures/tartanmaker.jpg", s)
     -- gears.wallpaper.centered("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     -- gears.wallpaper.fit("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
-    gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/xMzxbFU.jpg", s)
+    gears.wallpaper.maximized("/home/ayoub/.config/awesome/themes/mythe/background.jpg", s)
     -- Each screen has its own tag table.
     --- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     
