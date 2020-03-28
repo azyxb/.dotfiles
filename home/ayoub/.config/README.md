@@ -19,7 +19,7 @@
 + **WM**: [Awesome](https://awesomewm.org/)
 + **Terminal**: [st](https://st.suckless.org/)
 + **File Manager**: [Ranger](https://ranger.github.io/)
-+ **Editor**: [Vim](https://www.vim.org/) or maybe [Emacs](https://www.gnu.org/software/emacs/)
++ **Editor**: [Emacs](https://www.gnu.org/software/emacs/)
 + **Browser**: [Firefox](https://www.mozilla.org/firefox/)
 
 Et d'abord, ces configurations étaient-elles à nous?
