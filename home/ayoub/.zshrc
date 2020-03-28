@@ -68,6 +68,7 @@ alias ll='ls -la'
 
 # Cam
 alias cam="mpv av://v4l2:/dev/video0"
+alias video="ffmpeg -f v4l2 -video_size 640x480 -i /dev/video0 -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac webcam.mp4"
 
 # Turn off the screen and slock
 alias nox="xset dpms force off"
