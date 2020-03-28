@@ -15,8 +15,7 @@
 #     \/__/         \/__/         \/__/      
 
 # Path to your zsh installation.
-export ZSH=$HOME/.config/zsh
-export ZDOTDIR=$HOME/.config
+export ZSH=$HOME/.zsh
 
 # History
 HISTFILE=~/.cache/zhistory
@@ -250,6 +249,20 @@ calc() {
     echo "scale=3;$@" | bc -l
        }
 
+# dotfiles
+dotfiles() {
+    case "$1" in
+        listall)
+            shift
+            dotfiles ls-tree --full-tree -r --name-only HEAD "$@"
+            ;;
+            *)
+            /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="/" "$@"
+            ;;
+    esac
+}
+compdef dotfiles='git'
+
 # Disk usage formatted
 function duf {
 du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
@@ -268,17 +281,3 @@ export EDITOR="emacs --no-window-system"
 
 # Synatax
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-
-# dotfiles
-dotfiles() {
-    case "$1" in
-        listall)
-            shift
-            dotfiles ls-tree --full-tree -r --name-only HEAD "$@"
-            ;;
-            *)
-            /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="/" "$@"
-            ;;
-    esac
-}
-compdef dotfiles='git'
