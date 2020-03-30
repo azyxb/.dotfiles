@@ -24,7 +24,6 @@ dev-python/numpy
 dev-util/geany
 dev-vcs/git
 games-action/supertuxkart
-lxde-base/lxappearance
 media-fonts/dejavu
 media-fonts/dina
 media-fonts/eb-garamond
@@ -50,10 +49,9 @@ sys-boot/grub
 sys-devel/clang
 sys-firmware/intel-microcode
 sys-fs/dosfstools
-sys-fs/fuse-exfat
-sys-fs/mtpfs
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
+sys-power/acpi
 sys-power/acpilight
 sys-process/htop
 www-client/firefox
