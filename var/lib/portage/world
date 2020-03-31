@@ -5,7 +5,7 @@ app-editors/nano
 app-emacs/ebuild-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
-app-misc/ranger
+app-misc/mc
 app-misc/screen
 app-misc/sl
 app-portage/eix

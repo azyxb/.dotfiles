@@ -79,14 +79,6 @@ alias l.='ls -d .* --color=auto'
 # Get rid of command not found
 alias cd..='cd ..'
 
-# A quick way to get out of current directory
-alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
-
 # Do not delete / or prompt if deleting more than 3 files at a time
 alias rm='rm -I --preserve-root'
 
@@ -105,14 +97,6 @@ alias free="free -hm"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-
-# Get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-
-# Get top process eating cpu
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
 # Clear the screen of your clutter
 alias ccc="clear && ~/Scripts/.aura.sh"
@@ -231,14 +215,14 @@ ex ()
 }
 
 # To mkdir and cd
-mcd () {
+mkdircd () {
     mkdir -p $1
     cd $1
 }
 
 
 # To cd and ls
-cl() {
+cdls() {
     local dir="$1"
     local dir="${dir:=$HOME}"
     if [[ -d "$dir" ]]; then
