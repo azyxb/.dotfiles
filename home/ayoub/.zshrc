@@ -232,11 +232,6 @@ cdls() {
     fi
 }
 
-# Calculator
-calc() {
-    echo "scale=3;$@" | bc -l
-       }
-
 # dotfiles
 dotfiles() {
     case "$1" in

@@ -43,7 +43,7 @@ theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#D8D8D8"
+theme.border_normal = "#4A4756"
 theme.border_focus  = "#54487A"
 theme.border_marked = "#FF0000"
 
@@ -138,7 +138,7 @@ theme.layout_cornersw = "/home/ayoub/.config/awesome/themes/mythe/layouts/corner
 theme.layout_cornerse = "/home/ayoub/.config/awesome/themes/mythe/layouts/cornersew.png"
 
 -- Title bar colors
-theme.titlebar_bg_normal = "#61538D"
+theme.titlebar_bg_normal = "#4A4756"
 ---theme.titlebar_bg = "#1A0E19"
 theme.titlebar_bg_focus = "#54487A"
 

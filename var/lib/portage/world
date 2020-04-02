@@ -51,7 +51,6 @@ sys-firmware/intel-microcode
 sys-fs/dosfstools
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
-sys-power/acpi
 sys-power/acpilight
 sys-process/htop
 www-client/firefox
@@ -60,6 +59,7 @@ x11-apps/xrandr
 x11-apps/xset
 x11-base/xorg-server
 x11-drivers/xf86-video-intel
+x11-libs/gtk+
 x11-misc/slock
 x11-misc/xaos
 x11-misc/xcompmgr
