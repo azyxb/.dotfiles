@@ -153,7 +153,7 @@ alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
 ##alias moubileumount="fusermount -u ~/Documents/phone"
 
 # portage is great
-##alias accio="sudo emerge"
+alias accio="sudo emerge"
 ##alias accio="sudo pacman -S"
 
 # vi is great

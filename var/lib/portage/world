@@ -13,10 +13,6 @@ app-portage/genlop
 app-portage/gentoolkit
 app-shells/bash-completion
 app-shells/gentoo-bashcomp
-app-shells/gentoo-zsh-completions
-app-shells/zsh
-app-shells/zsh-completions
-app-shells/zsh-syntax-highlighting
 app-text/texlive
 app-text/tree
 app-text/zathura
@@ -62,10 +58,8 @@ x11-apps/xrandr
 x11-apps/xset
 x11-base/xorg-server
 x11-drivers/xf86-video-intel
-x11-libs/gtk+
 x11-misc/slock
 x11-misc/xaos
-x11-misc/xcompmgr
 x11-plugins/vicious
 x11-terms/st
 x11-wm/awesome
