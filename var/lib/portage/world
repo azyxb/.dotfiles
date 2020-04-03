@@ -11,6 +11,8 @@ app-misc/sl
 app-portage/eix
 app-portage/genlop
 app-portage/gentoolkit
+app-shells/bash-completion
+app-shells/gentoo-bashcomp
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
@@ -24,6 +26,7 @@ dev-python/numpy
 dev-util/geany
 dev-vcs/git
 games-action/supertuxkart
+games-misc/fortune-mod
 media-fonts/dejavu
 media-fonts/dina
 media-fonts/eb-garamond

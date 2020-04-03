@@ -1,32 +1,37 @@
-#  .zshrc
-#  
-#  
-#  
-#      ___           ___           ___     
-#     /\  \         /\  \         /\__\    
-#     \:\  \       /::\  \       /:/  /    
-#      \:\  \     /:/\ \  \     /:/__/     
-#       \:\  \   _\:\~\ \  \   /::\  \ ___ 
-# _______\:\__\ /\ \:\ \ \__\ /:/\:\  /\__\
-# \::::::::/__/ \:\ \:\ \/__/ \/__\:\/:/  /
-#  \:\~~\~~      \:\ \:\__\        \::/  / 
-#   \:\  \        \:\/:/  /        /:/  /  
-#    \:\__\        \::/  /        /:/  /   
-#     \/__/         \/__/         \/__/      
+# .bashrc
+#        ___           ___           ___           ___     
+#       /\  \         /\  \         /\  \         /\__\    
+#      /::\  \       /::\  \       /::\  \       /:/  /    
+#     /:/\:\  \     /:/\:\  \     /:/\ \  \     /:/__/     
+#    /::\~\:\__\   /::\~\:\  \   _\:\~\ \  \   /::\  \ ___ 
+#   /:/\:\ \:|__| /:/\:\ \:\__\ /\ \:\ \ \__\ /:/\:\  /\__\
+#   \:\~\:\/:/  / \/__\:\/:/  / \:\ \:\ \/__/ \/__\:\/:/  /
+#    \:\ \::/  /       \::/  /   \:\ \:\__\        \::/  / 
+#     \:\/:/  /        /:/  /     \:\/:/  /        /:/  /  
+#      \::/__/        /:/  /       \::/  /        /:/  /   
+#       ~~            \/__/         \/__/         \/__/    
 
-# Path to your zsh installation.
-export ZSH=$HOME/.zsh
+#        ___           ___     
+#       /\  \         /\  \    
+#      /::\  \       /::\  \   
+#     /:/\:\  \     /:/\ \  \  
+#    /::\~\:\  \   _\:\~\ \  \ 
+#   /:/\:\ \:\__\ /\ \:\ \ \__\
+#   \/__\:\/:/  / \:\ \:\ \/__/
+#        \::/  /   \:\ \:\__\  
+#         \/__/     \:\/:/  /  
+#                    \::/  /   
+#                     \/__/    
 
-# History
-HISTFILE=~/.cache/zhistory
-
-# Adds scripts and subdirectories to PATH
-export PATH="$PATH:$(du "$HOME/Scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-
-# MyThe[me]
-ZSH_THEME="MyThe"
-
-source $ZSH/.my-zsh.sh
+smileystatus()
+{
+	if [ "$?" == "0" ]; then
+		echo -e ' \e[0;32m:) '
+	else
+		echo -e ' \e[0;31m:( '
+	fi
+}
+PS1='`smileystatus`'"\W > \[$(tput sgr0)\]"
 
 #
 #      ___           ___                   ___           ___           ___           ___     
@@ -48,11 +53,11 @@ alias emacs="emacs -nw"
 alias unix="curl -L git.io/unix"
 
 # config
-alias zshrc="emacs -nw /home/ayoub/.zshrc"
+alias bashrc="emacs -nw /home/ayoub/.bashrc"
 alias conf="sudoedit /etc/portage/make.conf"
 
 # source
-alias so='source /home/ayoub/.zshrc'
+alias so='source /home/ayoub/.bashrc'
 
 # dotfiles
 alias dotss="dotfiles status"
@@ -85,10 +90,10 @@ alias rm='rm -I --preserve-root'
 # Firewall
 alias showfirewall="sudo iptables -L -n"
 
-# Confirmation 
-alias mv='mv -iv'
-alias cp='cp -iv'
-alias ln='ln -i'
+# wrap these commands for interactive use to avoid accidental overwrites.
+cp() { command cp -i "$@"; }
+mv() { command mv -i "$@"; }
+ln() { command ln -i "$@"; }
 
 # free for humans
 alias free="free -hm"
@@ -143,12 +148,12 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
 
 # I mounted my usb like a real one
-alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
-alias mobilemount="mtpfs ~/Documents/phone"
-alias moubileumount="fusermount -u ~/Documents/phone"
+##alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
+##alias mobilemount="mtpfs ~/Documents/phone"
+##alias moubileumount="fusermount -u ~/Documents/phone"
 
 # portage is great
-alias accio="sudo emerge"
+##alias accio="sudo emerge"
 ##alias accio="sudo pacman -S"
 
 # vi is great
@@ -156,9 +161,6 @@ alias accio="sudo emerge"
 
 # pfetch
 alias pfetch="$HOME/Scripts/pfetch"
-
-# Sorry
-alias please='sudo $(fc -ln -1)'
 
 #      ___           ___           ___           ___           ___                       ___           ___           ___     
 #     /\  \         /\__\         /\__\         /\  \         /\  \          ___        /\  \         /\__\         /\  \    
@@ -176,11 +178,11 @@ alias please='sudo $(fc -ln -1)'
 c ()
 {
     clear
-    echo "\033[0;35mmemory\033[0m"
+    echo -e "\e[35mmemory\e[0m"
     free -h | tail -n2
-    echo "\033[0;35mdisk\033[0m"
+    echo -e "\e[35mdisk\e[0m"
     df -h
-    echo "\033[0;35muptime\033[0m"
+    echo -e "\e[35muptime\e[0m"
     uptime
 }
 
@@ -193,26 +195,42 @@ function nanobk () {
 }
 
 # ARCHIVE EXTRACTION
-# usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2|*.tbz2) tar xjf $1   ;;
-      *.tar.gz|*.tgz)   tar xzf $1   ;;
-      *.bz2)            bunzip2 $1   ;;
-      *.rar)            unrar x $1     ;;
-      *.gz)             gunzip $1    ;;
-      *.tar)            tar xf $1    ;;
-      *.zip)            unzip $1     ;;
-      *.Z)              uncompress $1;;
-      *.7z)             7z x $1      ;;
-      *)                echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+# usage: extract <file>
+extract() {
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+                   c=(bsdtar xvf);;
+            *.7z)  c=(7z x);;
+            *.Z)   c=(uncompress);;
+            *.bz2) c=(bunzip2);;
+            *.exe) c=(cabextract);;
+            *.gz)  c=(gunzip);;
+            *.rar) c=(unrar x);;
+            *.xz)  c=(unxz);;
+            *.zip) c=(unzip);;
+            *)     echo "$0: unrecognized file extension: \`$i'" >&2
+                   continue;;
+        esac
+
+        command "${c[@]}" "$i"
+        ((e = e || $?))
+    done
+    return "$e"
 }
+
 
 # To mkdir and cd
 mkdircd () {
@@ -220,15 +238,33 @@ mkdircd () {
     cd $1
 }
 
-
 # To cd and ls
-cdls() {
-    local dir="$1"
-    local dir="${dir:=$HOME}"
-    if [[ -d "$dir" ]]; then
-        cd "$dir" >/dev/null; ls -hall --color=auto
+cl() {
+	local dir="$1"
+	local dir="${dir:=$HOME}"
+	if [[ -d "$dir" ]]; then
+		cd "$dir" >/dev/null; ls
+	else
+		echo "bash: cl: $dir: Directory not found"
+	fi
+}
+
+# Take notes
+note () {
+    # if file doesn't exist, create it
+    if [[ ! -f $HOME/.notes ]]; then
+        touch "$HOME/.notes"
+    fi
+
+    if ! (($#)); then
+        # no arguments, print file
+        cat "$HOME/.notes"
+    elif [[ "$1" == "-c" ]]; then
+        # clear file
+        printf "%s" > "$HOME/.notes"
     else
-        echo "zsh: cl: $dir: Directory not found"
+        # add all arguments to file
+        printf "%s\n" "$*" >> "$HOME/.notes"
     fi
 }
 
@@ -244,7 +280,6 @@ dotfiles() {
             ;;
     esac
 }
-compdef dotfiles='git'
 
 # Disk usage formatted
 function duf {
@@ -259,5 +294,19 @@ ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/10
 # To change from nano to emacs 
 export EDITOR="emacs --no-window-system"
 
-# Synatax
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+# To complete
+complete -c man which
+complete -cf sudo
+
+# HELP!!!
+run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
+bind -m emacs -x     '"\eh": run-help'
+
+# auto cd
+shopt -s autocd
+
+# no double entries in the shell history
+export HISTCONTROL="$HISTCONTROL erasedups:ignoreboth"
+
+# do not overwrite files when redirecting output by default.
+set -o noclobber

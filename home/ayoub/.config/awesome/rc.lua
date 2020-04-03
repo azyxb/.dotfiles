@@ -168,7 +168,7 @@ conf = {
      { "geany", terminal .. " -e emacs /home/ayoub/.config/geany/geany.conf" },
      { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
      { "Theme", terminal .. " -e emacs /home/ayoub/.config/awesome/themes/mythe/theme.lua" },
-     { "zshrc", terminal .. " -e emacs /home/ayoub/.zshrc" },
+     { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
      { "awesome", terminal .. " -e emacs /home/ayoub/.config/awesome/rc.lua" },
      { "portage", oportage},
      
