@@ -15,8 +15,8 @@ set colored-completion-prefix On
 set menu-complete-display-prefix On
 
 # History
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
 
 # Fast word movement
 "\e[1;5D": backward-word
@@ -24,3 +24,6 @@ set menu-complete-display-prefix On
 
 # case-insensitive
 set completion-ignore-case On
+
+# Del key
+set enable-keypad On

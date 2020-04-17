@@ -79,7 +79,7 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.max,
-    awful.layout.suit.fair,
+    -- awful.layout.suit.fair,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
@@ -118,13 +118,13 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end}
 }
 dev = {
     { "Ginny", "geany" },
     { "python", terminal .. " -e python" },
     { "lua", terminal .. " -e lua" },
     { "nano", terminal .. " -e nano" },
+    { "vim", terminal .. " -e vim" },
     { "emacs", "emacs" },
 }
 graphics = {
@@ -132,16 +132,20 @@ graphics = {
 }
 network = {
     { "firefox", "firefox" },
+    { "WeeChat", "weechat" },
 }
 shell = {
-    { "ranger", "/usr/bin/st -g 150x50 -e /usr/bin/ranger" },
+    { "mc", "/usr/bin/st -g 150x50 -e /usr/bin/mc" },
     { "st", terminal },
 }
 system = {
     { "htop", terminal .. " -e htop" },
+    { "bashtop", terminal .. " -e  sh -c '/home/ayoub/.bashtop/bashtop'" },
 }
 science = {
     { "python", terminal .. " -e python" },
+    { "XaoS", "xaos" },
+    { "Celestia", "celestia" },
 }
 scrot = {
     { "scrot", "scrot" },
@@ -151,10 +155,6 @@ volume = {
     { "up", "amixer set Master 50%+" },
     { "down", "amixer set Master 50%-" },
     { "toggle", "amixer set Master toggle" },
-}
-oexit = {
-    { "shutdown", "sudo poweroff" },
-    { "restart", "sudo reboot" },
 }
 oportage = {
 	 { "make.conf", terminal .. " -e sudoedit /etc/portage/make.conf" },
@@ -168,7 +168,6 @@ conf = {
      { "geany", terminal .. " -e emacs /home/ayoub/.config/geany/geany.conf" },
      { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
      { "Theme", terminal .. " -e emacs /home/ayoub/.config/awesome/themes/mythe/theme.lua" },
-     { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
      { "awesome", terminal .. " -e emacs /home/ayoub/.config/awesome/rc.lua" },
      { "portage", oportage},
      
@@ -244,17 +243,21 @@ colorscriptss = {
     { "crunch", crunch },
     { "alpha", alpha },
     { "colorview", colorview },    
-			}
+}
 scriptss = {
 	{ "Clrs", colorscriptss },
 	{ "pfetch", "/usr/bin/st -g 40x10 -e sh -c '/home/ayoub/Scripts/pfetch | cat - /dev/tty'" },
 	{ "bonsai", "/usr/bin/st -g 150x50 -e /home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2" },
-	}
+}
 virtualbox = {
+	{ "VBox", "virtualbox" },
 	{ "Gentoo", "vboxmanage startvm Gentoo LIVE" },
 	{ "Slackware", "vboxmanage startvm Slackware" },
 	{ "Debian", "vboxmanage startvm Debian" },
-	}
+}
+games = {
+	{ "STK", "supertuxkart" },
+}
 mymainmenu = awful.menu({ items = { { "Terminal", terminal },
                                     { "emacs", "emacs" },
                                     { " " },
@@ -263,26 +266,27 @@ mymainmenu = awful.menu({ items = { { "Terminal", terminal },
                                     { "ranger", "/usr/bin/st -g 150x50 -e /usr/bin/ranger" },
                                     { " " },
                                     { "Dev", dev},
-                                    { "Graphics", graphics},
-                                    { "Network", network},
-                                    { "Shells", shells},
-                                    { "VirtualBox", virtualbox},
-                                    { "System", system},
-                                    { "Science", science},
+                                    { "Graphics", graphics },
+                                    { "Internet", network },
+                                    { "Shells", shells },
+                                    { "VirtualBox", virtualbox },
+                                    { "System", system },
+                                    { "Science", science },
+                                    { "Games", games },
                                     { " " },
                                     { "Pipes", "/usr/bin/st -g 125x42 /home/ayoub/Scripts/color-scripts/pipes2" },
                                     { "htop", "/usr/bin/st -g 125x42 -e htop" },
                                     { "hello!", function () naughty.notify({ title = "Hello Ayoub!", text = "Have a nice day.", timeout = 5 }) end },
                                     { " " },
-                                    { "Scripts", scriptss},
-                                    { "Scrot", scrot},
-                                    { "Amixer", volume},
-                                    { "Conf", conf},
+                                    { "Scripts", scriptss },
+                                    { "Scrot", scrot },
+                                    { "Amixer", volume },
+                                    { "Conf", conf },
                                     { " " },
-                                    { "awesome", myawesomemenu},
+                                    { "awesome", myawesomemenu },
                                     { " " },
                                     { "Lock", "slock" },
-                                    { "Exit", oexit },
+                                    { "Exit", function() awesome.quit() end },
 
                                 }
                         })
@@ -362,10 +366,11 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
-    -- gears.wallpaper.tiled("/home/ayoub/Pictures/tartanmaker.jpg", s)
+    -- gears.wallpaper.tiled("/home/ayoub/Pictures/tiles/purplepossiblesmall.png", s)
     -- gears.wallpaper.centered("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     -- gears.wallpaper.fit("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     gears.wallpaper.maximized("/home/ayoub/.config/awesome/themes/mythe/background.jpg", s)
+    ---gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/.didden.jpg", s)
     -- Each screen has its own tag table.
     --- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     
@@ -777,6 +782,12 @@ awful.rules.rules = {
       end
     },
     { rule = { class = "Emacs" },
+      callback = function (c)
+	 c.border_width = "0"
+	 awful.titlebar.hide(c)
+      end
+    },
+    { rule = { class = "VirtualBox Machine" },
       callback = function (c)
 	 c.border_width = "0"
 	 awful.titlebar.hide(c)

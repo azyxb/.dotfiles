@@ -1,5 +1,5 @@
 # to go without IPv6 support
 bind=0.0.0.0
 # Global upload and download rate in KiB. "0" for unlimited.
-throttle.global_down.max_rate.set_kb = 0
+throttle.global_down.max_rate.set_kb =250
 throttle.global_up.max_rate.set_kb = 75

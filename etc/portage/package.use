@@ -20,9 +20,13 @@ x11-misc/xaos X gtk threads
 media-video/ffmpeg x264 v4l
 app-misc/mc -slang
 sys-process/procps -ncurses
+sci-astronomy/celestia glut
+net-print/hplip -snmp
+
 
 # editors
 app-editors/nano minimal
+app-editors/vim minimal -sound -acl
 app-editors/emacs X alsa gamesgif gtk imagemagick jpeg libxml2 png sound svg tiff xft xpm
 app-emacs/emacs-common-gentoo X games
 

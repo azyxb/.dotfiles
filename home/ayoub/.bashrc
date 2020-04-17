@@ -11,6 +11,9 @@
 #      \::/__/        /:/  /       \::/  /        /:/  /   
 #       ~~            \/__/         \/__/         \/__/    
 
+# SCIPY
+export SCIPY_PIL_IMAGE_VIEWER=sxiv
+
 #        ___           ___     
 #       /\  \         /\  \    
 #      /::\  \       /::\  \   
@@ -26,12 +29,13 @@
 smileystatus()
 {
 	if [ "$?" == "0" ]; then
-		echo -e ' \e[0;32m:) '
+		echo -e '\e[0;32m:)'
 	else
-		echo -e ' \e[0;31m:( '
+		echo -e '\e[0;31m:('
 	fi
 }
-PS1='`smileystatus`'"\W > \[$(tput sgr0)\]"
+
+PS1=' \[$(smileystatus)\] \W > \[$(tput sgr0)\]'
 
 #
 #      ___           ___                   ___           ___           ___           ___     
@@ -50,6 +54,7 @@ PS1='`smileystatus`'"\W > \[$(tput sgr0)\]"
 alias ls='ls --color=auto'
 alias ghosts='/home/ayoub/Scripts/color-scripts/ghosts'
 alias emacs="emacs -nw"
+alias e="emacs -nw"
 alias unix="curl -L git.io/unix"
 
 # config
@@ -64,9 +69,6 @@ alias dotss="dotfiles status"
 alias dotsc="dotfiles commit -m 'Small change'"
 alias dotsa="dotfiles add "
 alias dotsp="dotfiles push"
-
-# 'rona
-alias rona="curl https://covid19tracker.xyz/fr"
 
 # Use a long listing format
 alias ll='ls -la'
@@ -118,18 +120,10 @@ alias start="startx -- vt1"
 
 # The gentoo
 alias up="sudo emerge --update --newuse @world"
-alias ascendio="sudo eix-sync"
-
-# Others
-##alias tt="watch sensors"
-##alias gg="ping google.fr"
-##alias log="sudo tail -f /var/log/messages"
+alias ascendio="sudo emerge --sync"
 
 # Printer
-##alias printerr="sudo rc-service cupsd start"
-
-# Test my notifications, but I don't have notifications anymore: they are useless
-##alias notificationn="notify-send 'Hello world!' 'This is an example notification.' --icon=applications-development"
+alias printerr="sudo rc-service cupsd start"
 
 # The old one
 ##alias datee="sudo ntpdate pool.ntp.org"
@@ -147,11 +141,6 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 # SSD temperature
 alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
 
-# I mounted my usb like a real one
-##alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
-##alias mobilemount="mtpfs ~/Documents/phone"
-##alias moubileumount="fusermount -u ~/Documents/phone"
-
 # portage is great
 alias accio="sudo emerge"
 ##alias accio="sudo pacman -S"
@@ -162,6 +151,8 @@ alias accio="sudo emerge"
 # pfetch
 alias pfetch="$HOME/Scripts/pfetch"
 
+# bashtop
+alias bashtop="$HOME/.bashtop/bashtop"
 #      ___           ___           ___           ___           ___                       ___           ___           ___     
 #     /\  \         /\__\         /\__\         /\  \         /\  \          ___        /\  \         /\__\         /\  \    
 #    /::\  \       /:/  /        /::|  |       /::\  \        \:\  \        /\  \      /::\  \       /::|  |       /::\  \   
@@ -174,29 +165,23 @@ alias pfetch="$HOME/Scripts/pfetch"
 #                  \::/  /        /:/  /       \:\__\                     \/__/        \::/  /        /:/  /       \::/  /   
 #                   \/__/         \/__/         \/__/                                   \/__/         \/__/         \/__/    
 
-# c
-c ()
-{
-    clear
-    echo -e "\e[35mmemory\e[0m"
-    free -h | tail -n2
-    echo -e "\e[35mdisk\e[0m"
-    df -h
-    echo -e "\e[35muptime\e[0m"
-    uptime
-}
-
 # Open nano and make backup of original file. Useful for config files and things you don't want to edit the original
-function nanobk () {
+ebk() {
     echo "You are making a copy of $1 before you open it. Press enter to continue."
     read nul
     cp $1 $1.bak
-    nano $1
+    emacs -nw $1
+}
+
+# I mount my usb like a real one
+#alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
+usssb() {
+	sudo mount -o rw,users,umask=000 $1 /media/usb
 }
 
 # ARCHIVE EXTRACTION
-# usage: extract <file>
-extract() {
+# usage: ex <file>
+ex() {
     local c e i
 
     (($#)) || return
@@ -231,13 +216,6 @@ extract() {
     return "$e"
 }
 
-
-# To mkdir and cd
-mkdircd () {
-    mkdir -p $1
-    cd $1
-}
-
 # To cd and ls
 cl() {
 	local dir="$1"
@@ -250,7 +228,7 @@ cl() {
 }
 
 # Take notes
-note () {
+note() {
     # if file doesn't exist, create it
     if [[ ! -f $HOME/.notes ]]; then
         touch "$HOME/.notes"
@@ -282,12 +260,12 @@ dotfiles() {
 }
 
 # Disk usage formatted
-function duf {
+duf() {
 du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
 # Mem
-function mem {
+mem() {
 ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/1024}' | sed '1s/0.00 MB/MEM/'
 }
 
@@ -298,15 +276,5 @@ export EDITOR="emacs --no-window-system"
 complete -c man which
 complete -cf sudo
 
-# HELP!!!
-run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
-bind -m emacs -x     '"\eh": run-help'
-
-# auto cd
+# autocd
 shopt -s autocd
-
-# no double entries in the shell history
-export HISTCONTROL="$HISTCONTROL erasedups:ignoreboth"
-
-# do not overwrite files when redirecting output by default.
-set -o noclobber

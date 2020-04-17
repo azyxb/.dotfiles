@@ -2,13 +2,14 @@ app-admin/sudo
 app-admin/sysklogd
 app-arch/unzip
 app-editors/nano
+app-editors/vim
 app-emacs/ebuild-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
+app-emulation/virtualbox-extpack-oracle
 app-misc/mc
 app-misc/screen
 app-misc/sl
-app-portage/eix
 app-portage/genlop
 app-portage/gentoolkit
 app-shells/bash-completion
@@ -26,13 +27,11 @@ games-misc/fortune-mod
 media-fonts/dejavu
 media-fonts/dina
 media-fonts/eb-garamond
-media-fonts/source-pro
 media-gfx/gimp
 media-gfx/scrot
 media-gfx/sxiv
 media-sound/alsa-utils
 media-sound/moc
-media-tv/v4l-utils
 media-video/mpv
 net-irc/weechat
 net-misc/dhcpcd
@@ -40,6 +39,7 @@ net-p2p/rtorrent
 net-print/hplip
 net-wireless/iw
 net-wireless/wpa_supplicant
+sci-astronomy/celestia
 sci-libs/scipy
 sys-apps/inxi
 sys-apps/smartmontools
