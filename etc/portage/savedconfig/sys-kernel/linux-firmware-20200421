@@ -243,6 +243,7 @@ amdgpu/oland_mc.bin
 amdgpu/oland_k_smc.bin
 amdgpu/oland_ce.bin
 amdgpu/navi14_vcn.bin
+amdgpu/navi14_ta.bin
 amdgpu/navi14_sos.bin
 amdgpu/navi14_smc.bin
 amdgpu/navi14_sdma1.bin
@@ -592,7 +593,6 @@ brcm/brcmfmac43430-sdio.MUR1DX.txt
 brcm/brcmfmac43430-sdio.Hampoo-D2D3_Vi8A1.txt
 brcm/brcmfmac43430-sdio.AP6212.txt
 brcm/brcmfmac4339-sdio.bin
-brcm/brcmfmac43362-sdio.lemaker,bananapro.txt
 brcm/brcmfmac43362-sdio.cubietech,cubietruck.txt
 brcm/brcmfmac43362-sdio.bin
 brcm/brcmfmac4335-sdio.bin
@@ -658,11 +658,11 @@ cxgb3/t3b_psram-1.1.0.bin
 cxgb3/ael2020_twx_edc.bin
 cxgb3/ael2005_twx_edc.bin
 cxgb3/ael2005_opt_edc.bin
-cxgb4/t6fw-1.24.11.0.bin
-cxgb4/t5fw-1.24.11.0.bin
+cxgb4/t6fw-1.24.14.0.bin
+cxgb4/t5fw-1.24.14.0.bin
 cxgb4/t5fw-1.15.37.0.bin
 cxgb4/t5fw-1.14.4.0.bin
-cxgb4/t4fw-1.24.11.0.bin
+cxgb4/t4fw-1.24.14.0.bin
 cxgb4/t4fw-1.15.37.0.bin
 cxgb4/t4fw-1.14.4.0.bin
 cxgb4/configs/t6-config-hashfilter.txt
@@ -1003,9 +1003,12 @@ liquidio/lio_210sv_nic.bin
 liquidio/lio_210nv_nic.bin
 matrox/g400_warp.fw
 matrox/g200_warp.fw
+mediatek/mt8183/scp.img
 mediatek/mt8173/vpu_p.bin
 mediatek/mt8173/vpu_d.bin
 mediatek/mt7668pr2h.bin
+mediatek/mt7663pr2h.bin
+mediatek/mt7663_n9_v3.bin
 mediatek/mt7662u_rom_patch.bin
 mediatek/mt7662u.bin
 mediatek/mt7650e.bin
@@ -1519,6 +1522,8 @@ qca/nvm_00440302_eu.bin
 qca/nvm_00440302.bin
 qca/nvm_00130302.bin
 qca/nvm_00130300.bin
+qca/htnv20.bin
+qca/htbtfw20.tlv
 qca/crnv32.bin
 qca/crnv21.bin
 qca/crbtfw32.tlv
@@ -1558,6 +1563,7 @@ qcom/sdm845/cdsp.mbn
 qcom/sdm845/adspua.jsn
 qcom/sdm845/adspr.jsn
 qcom/sdm845/adsp.mbn
+qcom/sdm845/a630_zap.mbn
 qcom/a630_sqe.fw
 qcom/a630_gmu.bin
 qcom/a530v3_gpmu.fw2

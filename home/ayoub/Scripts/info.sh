@@ -21,7 +21,7 @@ EMPTY=┄
 
 name=$USER
 host=`hostname`
-distro="gentoo linux"
+distro="Gentoo"
 kernel=`uname -r`
 colors='chshc'
 font='dina'

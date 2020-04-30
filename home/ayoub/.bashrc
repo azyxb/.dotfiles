@@ -11,6 +11,14 @@
 #      \::/__/        /:/  /       \::/  /        /:/  /   
 #       ~~            \/__/         \/__/         \/__/    
 
+# To change from nano to emacs 
+export EDITOR="/usr/bin/emacs --no-window-system"
+
+# To avoid repeating history commands
+export HISTCONTROL=erasedups
+
+alias c=clear
+
 # SCIPY
 export SCIPY_PIL_IMAGE_VIEWER=sxiv
 
@@ -26,16 +34,16 @@ export SCIPY_PIL_IMAGE_VIEWER=sxiv
 #                    \::/  /   
 #                     \/__/    
 
-smileystatus()
+sstatus()
 {
 	if [ "$?" == "0" ]; then
-		echo -e '\e[0;32m:)'
+		echo -e '\e[0;32m'
 	else
-		echo -e '\e[0;31m:('
+		echo -e '\e[0;31m'
 	fi
 }
 
-PS1=' \[$(smileystatus)\] \W > \[$(tput sgr0)\]'
+PS1='\[$(sstatus)\] \W > \[$(tput sgr0)\]'
 
 #
 #      ___           ___                   ___           ___           ___           ___     
@@ -57,9 +65,8 @@ alias emacs="emacs -nw"
 alias e="emacs -nw"
 alias unix="curl -L git.io/unix"
 
-# config
-alias bashrc="emacs -nw /home/ayoub/.bashrc"
-alias conf="sudoedit /etc/portage/make.conf"
+# mpv
+alias mpv="mpv --save-position-on-quit --no-audio-display"
 
 # source
 alias so='source /home/ayoub/.bashrc'
@@ -70,66 +77,49 @@ alias dotsc="dotfiles commit -m 'Small change'"
 alias dotsa="dotfiles add "
 alias dotsp="dotfiles push"
 
-# Use a long listing format
-alias ll='ls -la'
-
 # Cam
 alias cam="mpv av://v4l2:/dev/video0"
 alias video="ffmpeg -f v4l2 -video_size 640x480 -i /dev/video0 -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac webcam.mp4"
 
-# Turn off the screen and slock
+# Turn off the screen
 alias nox="xset dpms force off"
-
-# Show hidden files
-alias l.='ls -d .* --color=auto'
 
 # Get rid of command not found
 alias cd..='cd ..'
 
-# Do not delete / or prompt if deleting more than 3 files at a time
-alias rm='rm -I --preserve-root'
-
 # Firewall
 alias showfirewall="sudo iptables -L -n"
+
+# Do not delete / or prompt if deleting more than 3 files at a time
+alias rm='rm -I --preserve-root'
 
 # wrap these commands for interactive use to avoid accidental overwrites.
 cp() { command cp -i "$@"; }
 mv() { command mv -i "$@"; }
 ln() { command ln -i "$@"; }
 
-# free for humans
-alias free="free -hm"
-
-# Parenting changing perms on / 
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
-
-# Clear the screen of your clutter
+# Clear the screen
 alias ccc="clear && ~/Scripts/.aura.sh"
 alias clr="clear;ls;pwd"
 
 # Bonsai
-alias bonss="/home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2"
+alias bonsai="/home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2"
 
 # X
 alias start="startx -- vt1"
-
-# It wasn't useful
-##alias downn="sudo tail -f /var/log/emerge-fetch.log"
 
 # The gentoo
 alias up="sudo emerge --update --newuse @world"
 alias ascendio="sudo emerge --sync"
 
 # Printer
-alias printerr="sudo rc-service cupsd start"
+alias starttheprinter="sudo rc-service cupsd start"
 
 # The old one
 ##alias datee="sudo ntpdate pool.ntp.org"
 
 # X
-alias whorunx="ps -fC X"
+alias whox="ps -fC X"
 
 # The system info
 alias infoo="/home/ayoub/Scripts/info.sh"
@@ -145,14 +135,9 @@ alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
 alias accio="sudo emerge"
 ##alias accio="sudo pacman -S"
 
-# vi is great
-#alias :q="exit"
-
 # pfetch
 alias pfetch="$HOME/Scripts/pfetch"
 
-# bashtop
-alias bashtop="$HOME/.bashtop/bashtop"
 #      ___           ___           ___           ___           ___                       ___           ___           ___     
 #     /\  \         /\__\         /\__\         /\  \         /\  \          ___        /\  \         /\__\         /\  \    
 #    /::\  \       /:/  /        /::|  |       /::\  \        \:\  \        /\  \      /::\  \       /::|  |       /::\  \   
@@ -174,7 +159,6 @@ ebk() {
 }
 
 # I mount my usb like a real one
-#alias usssb="sudo mount -o rw,users,umask=000 /dev/sdb1 /media/usb"
 usssb() {
 	sudo mount -o rw,users,umask=000 $1 /media/usb
 }
@@ -269,12 +253,19 @@ mem() {
 ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/1024}' | sed '1s/0.00 MB/MEM/'
 }
 
-# To change from nano to emacs 
-export EDITOR="emacs --no-window-system"
+# test microphone
+test-microphone() {
+arecord -vvv -f dat /dev/null
+}
 
 # To complete
 complete -c man which
 complete -cf sudo
+
+# HELP!!!
+run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
+bind -m vi-insert -x '"\eh": run-help'
+bind -m emacs -x     '"\eh": run-help'
 
 # autocd
 shopt -s autocd

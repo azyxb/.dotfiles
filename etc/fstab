@@ -43,7 +43,8 @@
 #UUID=58e72203-57d1-4497-81ad-97655bd56494		/		ext4		noatime		0 1
 #LABEL=swap		none		swap		sw		0 0
 #/dev/cdrom		/mnt/cdrom	auto		noauto,ro	0 0
+LABEL=bt		/boot		vfat		noauto,noatime	0 0
 LABEL=swp		none		swap		sw		0 0
-LABEL=rt		/		ext4		noatime,discard	0 1
-LABEL=hm		/home		ext4		noatime,discard	0 2
+LABEL=rt		/		ext4		defaults,noatime,discard	0 1
+LABEL=hm		/home		ext4		defaults,noatime,discard	0 2
 tmpfs			/var/tmp/portage		tmpfs		size=6G,uid=portage,gid=portage,mode=775,noatime	0 0

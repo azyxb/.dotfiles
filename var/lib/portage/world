@@ -3,10 +3,12 @@ app-admin/sysklogd
 app-arch/unzip
 app-editors/nano
 app-editors/vim
+app-emacs/color-theme
 app-emacs/ebuild-mode
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
 app-emulation/virtualbox-extpack-oracle
+app-laptop/laptop-mode-tools
 app-misc/mc
 app-misc/screen
 app-misc/sl
@@ -19,8 +21,6 @@ app-text/tree
 app-text/zathura
 app-text/zathura-meta
 dev-python/matplotlib
-dev-python/numpy
-dev-util/geany
 dev-vcs/git
 games-action/supertuxkart
 games-misc/fortune-mod
@@ -31,7 +31,6 @@ media-gfx/gimp
 media-gfx/scrot
 media-gfx/sxiv
 media-sound/alsa-utils
-media-sound/moc
 media-video/mpv
 net-irc/weechat
 net-misc/dhcpcd
@@ -51,6 +50,7 @@ sys-fs/dosfstools
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-power/acpilight
+sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xprop

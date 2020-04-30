@@ -118,14 +118,14 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
+   { "Exit", function() awesome.quit() end },
 }
 dev = {
-    { "Ginny", "geany" },
-    { "python", terminal .. " -e python" },
-    { "lua", terminal .. " -e lua" },
-    { "nano", terminal .. " -e nano" },
     { "vim", terminal .. " -e vim" },
     { "emacs", "emacs" },
+    { "nano", terminal .. " -e nano" },
+    { "Leia", terminal .. " -e lua" },
+    { "python", terminal .. " -e python" },
 }
 graphics = {
     { "GIMP", "/usr/bin/gimp -n" },
@@ -244,10 +244,30 @@ colorscriptss = {
     { "alpha", alpha },
     { "colorview", colorview },    
 }
+games = {
+	{ "STK", "supertuxkart" },
+}
+appss = {
+	{ "Dev", dev},
+	{ "Graphics", graphics },
+	{ "Internet", network },
+	{ "Shells", shells },
+	{ "VirtualBox", virtualbox },
+	{ "System", system },
+	{ "Science", science },
+	{ "Games", games },
+}
 scriptss = {
 	{ "Clrs", colorscriptss },
 	{ "pfetch", "/usr/bin/st -g 40x10 -e sh -c '/home/ayoub/Scripts/pfetch | cat - /dev/tty'" },
 	{ "bonsai", "/usr/bin/st -g 150x50 -e /home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2" },
+	{ "Amixer", volume },
+	{ "Scrot", scrot },
+	{ "hello!", function () naughty.notify({ title = "Hello Ayoub!", text = "Have a nice day.", timeout = 5 }) end },
+	{ "Pipes", "/usr/bin/st -g 125x42 /home/ayoub/Scripts/color-scripts/pipes2" },
+	{ "htop", "/usr/bin/st -g 125x42 -e htop" },
+	{ "Conf", conf },
+	{ "Apps", appss },
 }
 virtualbox = {
 	{ "VBox", "virtualbox" },
@@ -255,39 +275,15 @@ virtualbox = {
 	{ "Slackware", "vboxmanage startvm Slackware" },
 	{ "Debian", "vboxmanage startvm Debian" },
 }
-games = {
-	{ "STK", "supertuxkart" },
-}
+
+
 mymainmenu = awful.menu({ items = { { "Terminal", terminal },
                                     { "emacs", "emacs" },
-                                    { " " },
-                                    { "Ginny", "geany" },
                                     { "Firefox", "firefox" },
-                                    { "ranger", "/usr/bin/st -g 150x50 -e /usr/bin/ranger" },
-                                    { " " },
-                                    { "Dev", dev},
-                                    { "Graphics", graphics },
-                                    { "Internet", network },
-                                    { "Shells", shells },
+                                    { "hjkl", scriptss },
                                     { "VirtualBox", virtualbox },
-                                    { "System", system },
-                                    { "Science", science },
-                                    { "Games", games },
-                                    { " " },
-                                    { "Pipes", "/usr/bin/st -g 125x42 /home/ayoub/Scripts/color-scripts/pipes2" },
-                                    { "htop", "/usr/bin/st -g 125x42 -e htop" },
-                                    { "hello!", function () naughty.notify({ title = "Hello Ayoub!", text = "Have a nice day.", timeout = 5 }) end },
-                                    { " " },
-                                    { "Scripts", scriptss },
-                                    { "Scrot", scrot },
-                                    { "Amixer", volume },
-                                    { "Conf", conf },
-                                    { " " },
                                     { "awesome", myawesomemenu },
-                                    { " " },
                                     { "Lock", "slock" },
-                                    { "Exit", function() awesome.quit() end },
-
                                 }
                         })
 
@@ -370,6 +366,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- gears.wallpaper.centered("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     -- gears.wallpaper.fit("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     gears.wallpaper.maximized("/home/ayoub/.config/awesome/themes/mythe/background.jpg", s)
+    --gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/opensourcer.png", s)
     ---gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/.didden.jpg", s)
     -- Each screen has its own tag table.
     --- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -477,7 +474,7 @@ awful.screen.connect_for_each_screen(function(s)
     vicious.register(batwidget, vicious.widgets.bat, "$2% / $1", 61, "BAT0")
     -- cpu temperature
     tempwidget = wibox.widget.textbox()
-    vicious.register(tempwidget, vicious.widgets.thermal, "$1 °C", 17, "thermal_zone1")
+    vicious.register(tempwidget, vicious.widgets.thermal, "$1 °C", 17, "thermal_zone7")
     -- battery temp
     battempwidget = wibox.widget.textbox()
     vicious.register(battempwidget, vicious.widgets.thermal, " @ $1 °C", 81, "thermal_zone0")
@@ -650,9 +647,9 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({ }, "XF86AudioMute",  function () awful.util.spawn("amixer set Master toggle") end ),
-    --- awful.key({ }, "XF86MonBrightnessDown",  function () awful.util.spawn("sudo xbacklight -dec 5") end ),
-    --- awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 5") end ),
-    --- awful.key({ }, "XF86Sleep",  function () awful.util.spawn("xset dpms force off") end ),
+    awful.key({ }, "XF86MonBrightnessDown",  function () awful.util.spawn("sudo xbacklight -dec 5") end ),
+    awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 5") end ),
+    awful.key({ }, "XF86Sleep",  function () awful.util.spawn("xset dpms force off") end ),
     -- firefox, emacs...
     awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("firefox") end,
                 {description = "start firefox", group = "launcher" }),
@@ -772,6 +769,7 @@ awful.rules.rules = {
    { rule = { class = "st" },
      properties =  { floating = true },
      callback = function (c)
+	c.border_width = "0"
 	awful.placement.centered(c,nil)
      end
    },

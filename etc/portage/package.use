@@ -25,7 +25,7 @@ net-print/hplip -snmp
 
 
 # editors
-app-editors/nano minimal
+app-editors/nano minimal -magic -ncurses
 app-editors/vim minimal -sound -acl
 app-editors/emacs X alsa gamesgif gtk imagemagick jpeg libxml2 png sound svg tiff xft xpm
 app-emacs/emacs-common-gentoo X games

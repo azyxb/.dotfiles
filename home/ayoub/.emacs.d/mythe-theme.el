@@ -1,8 +1,8 @@
-;;; wilmersdorf-theme.el --- Emacs theme with dark subtle syntax highlighting
+;;; mythe-theme.el --- Emacs theme with dark subtle syntax highlighting
 
-;; Copyright (C) 2019-2020, Ian Y.E. Pan
+;; Copyright (C) 2018-2020, Ayoub Benaddi
 
-;; Author: Ian Y.E. Pan
+;; Author: Ayoub Benaddi
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 
 ;;; Code:
 
-(deftheme wilmersdorf)
+(deftheme mythe)
 (let ((class '((class color) (min-colors 89)))
       (fg0     "#d8d8d8")
       (fg1     "#d8d8d8")
@@ -49,7 +49,7 @@
       (var     "#f0ad4e")
       (warning "#D9534F"))
   (custom-theme-set-faces
-   'wilmersdorf
+   'mythe
    `(default                                  ((,class (:background ,bg1 :foreground ,fg1))))
 
    `(company-preview-common                   ((t (:foreground unspecified :background ,bg2))))
@@ -306,7 +306,7 @@
    `(evil-ex-substitute-replacement           ((t :foreground "#0ff000" :weight bold)))
    ))
 
-(provide-theme 'wilmersdorf)
+(provide-theme 'mythe)
 
-;;; wilmersdorf-theme.el ends here
+;;; mythe-theme.el ends here
 
