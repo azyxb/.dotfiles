@@ -11,5 +11,5 @@
 #       \|__|                     \/__/                              
 #xcompmgr &
 #conky &
-exec /usr/bin/awesome
+exec dbus-launch --sh-syntax --exit-with-session /usr/bin/awesome
 
