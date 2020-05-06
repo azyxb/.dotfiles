@@ -3,11 +3,9 @@ media-libs/mesa -llvm
 sys-devel/llvm gold -llvm_targets_AMDGPU -llvm_targets_BPF -llvm_targets_NVPTX -ncurses 
 sys-devel/clang -static-analyzer -llvm_targets_AMDGPU -llvm_targets_BPF -llvm_targets_NVPTX
 sys-kernel/gentoo-sources symlink # It is very utile
-media-sound/moc mad
 dev-vcs/git -perl # pourquoi perl
 sys-boot/grub -fonts -themes -truetype -sdl # a minimal grub
 app-admin/sudo -sendmail
-media-plugins/gst-plugins-meta ffmpeg
 sys-apps/openrc -netifrc
 x11-base/xorg-server -suid
 media-video/mpv X cli -lcms -xv -egl -lua -luajit -uchardet opengl

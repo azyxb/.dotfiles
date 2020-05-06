@@ -137,10 +137,7 @@ network = {
 shell = {
     { "mc", "/usr/bin/st -g 150x50 -e /usr/bin/mc" },
     { "st", terminal },
-}
-system = {
     { "htop", terminal .. " -e htop" },
-    { "bashtop", terminal .. " -e  sh -c '/home/ayoub/.bashtop/bashtop'" },
 }
 science = {
     { "python", terminal .. " -e python" },
@@ -256,9 +253,7 @@ appss = {
 	{ "Dev", dev},
 	{ "Graphics", graphics },
 	{ "Internet", network },
-	{ "Shells", shells },
-	{ "VirtualBox", virtualbox },
-	{ "System", system },
+	{ "Shells", shell },
 	{ "Science", science },
 	{ "Games", games },
 }

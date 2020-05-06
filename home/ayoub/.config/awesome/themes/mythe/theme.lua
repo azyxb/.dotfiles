@@ -30,10 +30,10 @@ local theme = {}
 
 theme.font          = "dina 8"
 
-theme.bg_normal     = "#030303"
-theme.bg_focus      = "#030303"
-theme.bg_urgent     = "#030303"
-theme.bg_minimize   = "#030303"
+theme.bg_normal     = "#000000"
+theme.bg_focus      = "#000000"
+theme.bg_urgent     = "#000000"
+theme.bg_minimize   = "#000000"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#AFAFAF"
