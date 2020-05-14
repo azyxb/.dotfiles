@@ -44,10 +44,10 @@
       (const   "#D9534F")
       (comment "#686858")
       (func    "#3465A4")
-      (str     "#73D216")
+      (str     "#4E9A06")
       (type    "#7e8aa2")
       (var     "#f0ad4e")
-      (warning "#D9534F"))
+      (warning "#ef2929"))
   (custom-theme-set-faces
    'mythe
    `(default                                  ((,class (:background ,bg1 :foreground ,fg1))))

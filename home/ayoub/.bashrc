@@ -18,6 +18,7 @@ export EDITOR="/usr/bin/emacs --no-window-system"
 export HISTCONTROL=erasedups
 
 alias c=clear
+alias thekernelinplace="sudo cp arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage-gentoo.efi" 
 
 # SCIPY
 export SCIPY_PIL_IMAGE_VIEWER=sxiv
@@ -78,7 +79,7 @@ alias dotsa="dotfiles add "
 alias dotsp="dotfiles push"
 
 # Cam
-alias cam="mpv av://v4l2:/dev/video0"
+alias cam="mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0"
 alias video="ffmpeg -f v4l2 -video_size 640x480 -i /dev/video0 -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac webcam.mp4"
 
 # Turn off the screen
@@ -130,6 +131,9 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 # SSD temperature
 alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
+
+#QEMU
+alias debian="qemu-system-x86_64 -smp 2 -m 4G -drive file=/home/ayoub/VirtualMachines/Debian,format=qcow2 -vga qxl"
 
 # portage is great
 alias accio="sudo emerge"

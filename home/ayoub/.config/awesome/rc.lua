@@ -269,11 +269,8 @@ scriptss = {
 	{ "Conf", conf },
 	{ "Apps", appss },
 }
-virtualbox = {
-	{ "VBox", "virtualbox" },
-	{ "Gentoo", "vboxmanage startvm Gentoo LIVE" },
-	{ "Slackware", "vboxmanage startvm Slackware" },
-	{ "Debian", "vboxmanage startvm Debian" },
+virtualm = {
+	{ "virt-manager", "virtmanager" },
 }
 
 
@@ -281,7 +278,7 @@ mymainmenu = awful.menu({ items = { { "Terminal", terminal },
                                     { "emacs", "emacs" },
                                     { "Firefox", "firefox" },
                                     { "hjkl", scriptss },
-                                    { "VirtualBox", virtualbox },
+                                    { "VM", virtualm },
                                     { "awesome", myawesomemenu },
                                     { "Lock", "slock" },
                                 }
@@ -365,14 +362,14 @@ awful.screen.connect_for_each_screen(function(s)
     -- gears.wallpaper.tiled("/home/ayoub/Pictures/tiles/purplepossiblesmall.png", s)
     -- gears.wallpaper.centered("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
     -- gears.wallpaper.fit("/home/ayoub/Pictures/wallpapers/Surviving Mars.png", s)
-    gears.wallpaper.maximized("/home/ayoub/.config/awesome/themes/mythe/background.jpg", s)
-    --gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/opensourcer.png", s)
+    gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/tatooinedrawbw.jpg", s)
+    -- gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/opensourcer.png", s)
     ---gears.wallpaper.maximized("/home/ayoub/Pictures/Backgrounds/.didden.jpg", s)
     -- Each screen has its own tag table.
     --- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     
     awful.tag.add("00", {
-        -- icon               = "/home/ayoub/.icons/Flat-Remix-Dark/apps/scalable/Terminal.svg",
+        -- icon               = "/home/ayoub/Downloads/logotype.svg",
         layout             = awful.layout.suit.floating,
         --        master_fill_policy = "master_width_factor",
         gap_single_client  = true,
@@ -382,7 +379,7 @@ awful.screen.connect_for_each_screen(function(s)
         }
     )
     awful.tag.add("01", {
-        --  icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
+        -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
         layout = awful.layout.suit.max,
         gap                = 5,
         gap_single_client  = true,
@@ -644,12 +641,13 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome" }),
     -- Sound and brightness
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 10%+") end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 10%-") end),
     awful.key({ }, "XF86AudioMute",  function () awful.util.spawn("amixer set Master toggle") end ),
-    awful.key({ }, "XF86MonBrightnessDown",  function () awful.util.spawn("sudo xbacklight -dec 5") end ),
-    awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 5") end ),
+    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("sudo xbacklight -dec 10") end),
+    awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 10") end ),
     awful.key({ }, "XF86Sleep",  function () awful.util.spawn("xset dpms force off") end ),
+    awful.key({ }, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
     -- firefox, emacs...
     awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("firefox") end,
                 {description = "start firefox", group = "launcher" }),

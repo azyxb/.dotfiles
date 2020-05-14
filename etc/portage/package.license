@@ -2,5 +2,4 @@
 sys-kernel/linux-firmware linux-fw-redistributable no-source-code
 # intel-microcode
 sys-firmware/intel-microcode intel-ucode
-# required by virtualbox-extpack-oracle (argument)
-app-emulation/virtualbox-extpack-oracle PUEL
+

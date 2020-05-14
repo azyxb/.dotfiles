@@ -11,5 +11,7 @@
 #       \|__|                     \/__/                              
 #xcompmgr &
 #conky &
-exec dbus-launch --sh-syntax --exit-with-session /usr/bin/awesome
-
+exec /usr/bin/awesome
+#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/awesome
+#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/openbox
+#exec openbox
