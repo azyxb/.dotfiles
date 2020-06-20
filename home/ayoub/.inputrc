@@ -14,14 +14,6 @@ set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
 
-# History
-"\e[5~": history-search-backward
-"\e[6~": history-search-forward
-
-# Fast word movement
-"\e[1;5D": backward-word
-"\e[1;5C": forward-word
-
 # case-insensitive
 set completion-ignore-case On
 

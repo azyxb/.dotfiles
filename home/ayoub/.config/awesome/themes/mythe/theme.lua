@@ -82,7 +82,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = "/home/ayoub/.config/awesome/themes/mythe/submenu.png"
 theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_width  = dpi(50)
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -145,7 +145,7 @@ theme.titlebar_bg_focus = "#54487A"
 -- Display the taglist squares
 theme.taglist_squares_sel = "/home/ayoub/.config/awesome/themes/mythe/layouts/square_sel.png"
 theme.taglist_squares_unsel  = "/home/ayoub/.config/awesome/themes/mythe/layouts/square_unsel.png"
-theme.taglist_spacing = dpi(2)
+---theme.taglist_spacing = dpi(2)
 -- theme.taglist_squares_sel = nil
 -- theme.taglist_squares_unsel = nil
 theme.taglist_squares_sel_empty = nil

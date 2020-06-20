@@ -12,13 +12,10 @@
 #       ~~            \/__/         \/__/         \/__/    
 
 # To change from nano to emacs 
-export EDITOR="/usr/bin/emacs --no-window-system"
-
-# To avoid repeating history commands
-export HISTCONTROL=erasedups
+export EDITOR="/usr/bin/mg"
 
 alias c=clear
-alias thekernelinplace="sudo cp arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage-gentoo.efi" 
+alias thekernelinplace="sudo cp arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage.efi" 
 
 # SCIPY
 export SCIPY_PIL_IMAGE_VIEWER=sxiv
@@ -62,9 +59,6 @@ PS1='\[$(sstatus)\] \W > \[$(tput sgr0)\]'
 # Misc
 alias ls='ls --color=auto'
 alias ghosts='/home/ayoub/Scripts/color-scripts/ghosts'
-alias emacs="emacs -nw"
-alias e="emacs -nw"
-alias unix="curl -L git.io/unix"
 
 # mpv
 alias mpv="mpv --save-position-on-quit --no-audio-display"
@@ -132,11 +126,9 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 # SSD temperature
 alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
 
-#QEMU
-alias debian="qemu-system-x86_64 -smp 2 -m 4G -drive file=/home/ayoub/VirtualMachines/Debian,format=qcow2 -vga qxl"
-
 # portage is great
 alias accio="sudo emerge"
+alias lasttime="cat /var/db/repos/gentoo/metadata/timestamp.chk"
 ##alias accio="sudo pacman -S"
 
 # pfetch
@@ -164,7 +156,17 @@ ebk() {
 
 # I mount my usb like a real one
 usssb() {
-	sudo mount -o rw,users,umask=000 $1 /media/usb
+    sudo mount -o rw,users,umask=000 $1 /media/usb
+}
+
+# LaTex
+pdf() {
+    pdflatex $1 && pkill -HUP mupdf
+}
+
+# djvu to pdf
+djvu2pdf() {
+    ddjvu -format=pdf -quality=85 -verbose $1 $1.pdf
 }
 
 # ARCHIVE EXTRACTION
@@ -271,5 +273,9 @@ run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
 bind -m vi-insert -x '"\eh": run-help'
 bind -m emacs -x     '"\eh": run-help'
 
+HISTSIZE=100000
+HISTFILESIZE=100000 
+HISTCONTROL=ignoredups:erasedups
+
 # autocd
-shopt -s autocd
+shopt -s autocd histappend

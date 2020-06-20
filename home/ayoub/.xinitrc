@@ -9,9 +9,6 @@
 #      |:|  |      \:\__\         |::/  /    \:\__\       \/__/      
 #      |:|  |       \/__/         /:/  /      \/__/                  
 #       \|__|                     \/__/                              
-#xcompmgr &
-#conky &
-exec /usr/bin/awesome
-#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/awesome
-#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/openbox
-#exec openbox
+
+#exec /usr/bin/awesome
+exec dbus-launch --sh-syntax --exit-with-session awesome

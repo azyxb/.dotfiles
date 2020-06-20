@@ -63,8 +63,8 @@ end
 beautiful.init("/home/ayoub/.config/awesome/themes/mythe/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "/usr/bin/st -g 140x30"
-editor = os.getenv("EDITOR") or "emacs"
+terminal = "/usr/bin/st -g 110x27"
+editor = "mg"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -120,167 +120,10 @@ myawesomemenu = {
    { "restart", awesome.restart },
    { "Exit", function() awesome.quit() end },
 }
-dev = {
-    { "vim", terminal .. " -e vim" },
-    { "emacs", "emacs" },
-    { "nano", terminal .. " -e nano" },
-    { "Leia", terminal .. " -e lua" },
-    { "python", terminal .. " -e python" },
-}
-graphics = {
-    { "GIMP", "/usr/bin/gimp -n" },
-}
-network = {
-    { "firefox", "firefox" },
-    { "WeeChat", "weechat" },
-}
-shell = {
-    { "mc", "/usr/bin/st -g 150x50 -e /usr/bin/mc" },
-    { "st", terminal },
-    { "htop", terminal .. " -e htop" },
-}
-science = {
-    { "python", terminal .. " -e python" },
-    { "XaoS", "xaos" },
-    { "Celestia", "celestia" },
-}
-scrot = {
-    { "scrot", "scrot" },
-    { "scrot d", "scrot -d 15" },
-}
-volume = {
-    { "up", "amixer set Master 50%+" },
-    { "down", "amixer set Master 50%-" },
-    { "toggle", "amixer set Master toggle" },
-}
-oportage = {
-	 { "make.conf", terminal .. " -e sudoedit /etc/portage/make.conf" },
-     { "acc_kw", terminal .. " -e sudoedit /etc/portage/package.accept_keywords" },
-     { "p.env", terminal .. " -e sudoedit /etc/portage/package.env" },
-     { "p.liscence", terminal .. " -e sudoedit /etc/portage/package.license" },
-     { "p.mask", terminal .. " -e sudoedit /etc/portage/package.mask" },
-     { "p.use", terminal .. " -e sudoedit /etc/portage/package.use" },
- }
-conf = {
-     { "geany", terminal .. " -e emacs /home/ayoub/.config/geany/geany.conf" },
-     { "bashrc", terminal .. " -e emacs /home/ayoub/.bashrc" },
-     { "Theme", terminal .. " -e emacs /home/ayoub/.config/awesome/themes/mythe/theme.lua" },
-     { "awesome", terminal .. " -e emacs /home/ayoub/.config/awesome/rc.lua" },
-     { "portage", oportage},
-     
-}
-ghostss = {
-    { "run", "/usr/bin/st -g 78x16 -e sh -c '/home/ayoub/Scripts/color-scripts/ghosts | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/ghosts" },
-          }
-Arch = {
-    { "run", "/usr/bin/st -g 92x12 -e sh -c '/home/ayoub/Scripts/color-scripts/arch | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/arch" },
-          }
-DNA = {
-    { "run", "/usr/bin/st -g 54x31 -e sh -c '/home/ayoub/Scripts/color-scripts/dna | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/dna" },
-}
-PacMan = {
-    { "run", "/usr/bin/st -g 98x21 -e sh -c '/home/ayoub/Scripts/color-scripts/pacman | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/pacman" },
-}
-Pipes = {
-    { "run", "/usr/bin/st -g 78x16 -e sh -c '/home/ayoub/Scripts/color-scripts/pipes2 | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/pipes2" },
-}
-Rally = {
-    { "run", "/usr/bin/st -g 80x22 -e sh -c '/home/ayoub/Scripts/color-scripts/rally-x | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/rally-x" },
-}
-TheBat = {
-    { "run", "/usr/bin/st -g 90x15 -e sh -c '/home/ayoub/Scripts/color-scripts/thebat2 | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/thebat2" },
-}
-illumina = {
-    { "run", "/usr/bin/st -g 40x18 -e sh -c '/home/ayoub/Scripts/color-scripts/illumina | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/illumina" },
-}
-spectrum = {
-    { "run", "/usr/bin/st -g 40x18 -e sh -c '/home/ayoub/Scripts/color-scripts/spectrum | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/spectrum" },
-}
-dotx = {
-    { "run", "/usr/bin/st -g 48x10 -e sh -c '/home/ayoub/Scripts/color-scripts/dotx | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/dotx" },
-}
-colorwheel = {
-    { "run", "/usr/bin/st -g 20x7 -e sh -c '/home/ayoub/Scripts/color-scripts/colorwheel | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/colorwheel" },
-}
-crunch = {
-    { "run", "/usr/bin/st -g 73x10 -e sh -c '/home/ayoub/Scripts/color-scripts/crunch | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/crunch" },
-}
-alpha = {
-    { "run", "/usr/bin/st -g 60x7 -e sh -c '/home/ayoub/Scripts/color-scripts/alpha | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/alpha" },
-}
-colorview = {
-    { "run", "/usr/bin/st -g 85x30 -e sh -c '/home/ayoub/Scripts/color-scripts/colorview | cat - /dev/tty'" },
-    { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/colorview" },
-}
-darth  = {
-   { "run", "/usr/bin/st -g 85x16 -e sh -c '/home/ayoub/Scripts/color-scripts/darthvader | cat - /dev/tty'" },
-   { "edit", "/usr/bin/st -g 150x50 -e emacs /home/ayoub/Scripts/color-scripts/darthvader" },
-}
-colorscriptss = {
-   { "Anakin", darth },
-   { "ghosts", ghostss },
-   { "arch", Arch },
-   { "DNA", DNA },
-   { "PacMan", PacMan },
-   { "pipes", Pipes },
-   { "rally", Rally },
-   { "TheBat", TheBat },
-   { "illumina", illumina },
-   { "spectrum", spectrum },
-   { "dotx", dotx },
-   { "colorwheel", colorwheel },
-   { "crunch", crunch },
-   { "alpha", alpha },
-   { "colorview", colorview },    
-}
-games = {
-	{ "STK", "supertuxkart" },
-}
-appss = {
-	{ "Dev", dev},
-	{ "Graphics", graphics },
-	{ "Internet", network },
-	{ "Shells", shell },
-	{ "Science", science },
-	{ "Games", games },
-}
-scriptss = {
-	{ "Clrs", colorscriptss },
-	{ "pfetch", "/usr/bin/st -g 40x10 -e sh -c '/home/ayoub/Scripts/pfetch | cat - /dev/tty'" },
-	{ "bonsai", "/usr/bin/st -g 150x50 -e /home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2" },
-	{ "Amixer", volume },
-	{ "Scrot", scrot },
-	{ "hello!", function () naughty.notify({ title = "Hello Ayoub!", text = "Have a nice day.", timeout = 5 }) end },
-	{ "Pipes", "/usr/bin/st -g 125x42 /home/ayoub/Scripts/color-scripts/pipes2" },
-	{ "htop", "/usr/bin/st -g 125x42 -e htop" },
-	{ "Conf", conf },
-	{ "Apps", appss },
-}
-virtualm = {
-	{ "virt-manager", "virtmanager" },
-}
 
-
-mymainmenu = awful.menu({ items = { { "Terminal", terminal },
-                                    { "emacs", "emacs" },
-                                    { "Firefox", "firefox" },
-                                    { "hjkl", scriptss },
-                                    { "VM", virtualm },
-                                    { "awesome", myawesomemenu },
-                                    { "Lock", "slock" },
+mymainmenu = awful.menu({ items = { { "st", terminal },
+                                    { "mg", "st -g 180x60 -e mg" },
+                                    { "lk", "slock" },
                                 }
                         })
 
@@ -448,7 +291,8 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    ---s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.noempty, taglist_buttons)
 
 	-- Separators
 	bar_separator = wibox.widget.textbox(" | ")
@@ -456,7 +300,7 @@ awful.screen.connect_for_each_screen(function(s)
 	space_separator = wibox.widget.textbox(" ")
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, tasklist_buttons)
+    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top",height = 18, opacity = 1, width = 1920, screen = s })
@@ -471,7 +315,7 @@ awful.screen.connect_for_each_screen(function(s)
     vicious.register(batwidget, vicious.widgets.bat, "$2% / $1", 61, "BAT0")
     -- cpu temperature
     tempwidget = wibox.widget.textbox()
-    vicious.register(tempwidget, vicious.widgets.thermal, "$1 °C", 17, "thermal_zone7")
+    vicious.register(tempwidget, vicious.widgets.thermal, "$1 °C", 7, "thermal_zone7")
     -- battery temp
     battempwidget = wibox.widget.textbox()
     vicious.register(battempwidget, vicious.widgets.thermal, " @ $1 °C", 81, "thermal_zone0")
@@ -481,12 +325,12 @@ awful.screen.connect_for_each_screen(function(s)
     -- net speed
     netwidget = wibox.widget.textbox()
     vicious.register(netwidget, vicious.widgets.net, " @ ${wlp2s0 down_kb} kB/s")
-    -- load 1 min
+    -- load
     loadwidget = wibox.widget.textbox()
     vicious.register(loadwidget, vicious.widgets.uptime, "$4, $5, $6")
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+       layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
@@ -648,11 +492,14 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 10") end ),
     awful.key({ }, "XF86Sleep",  function () awful.util.spawn("xset dpms force off") end ),
     awful.key({ }, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
+    awful.key({ }, "Print", function () awful.util.spawn("scrot") end ),
     -- firefox, emacs...
     awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("firefox") end,
                 {description = "start firefox", group = "launcher" }),
-    awful.key({ modkey ,"Shift" }, "e",     function ()  awful.util.spawn("emacs") end,
+    awful.key({ modkey ,"Shift" }, "e",     function ()  awful.util.spawn("st -g 180x60 -e emacs") end,
                 {description = "start emacs", group = "launcher" }),
+    awful.key({ modkey }, "e",     function ()  awful.util.spawn("st -g 180x60 -e mg") end,
+		{description = "start gm", group = "launcher" }),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher" })
@@ -767,7 +614,7 @@ awful.rules.rules = {
    { rule = { class = "st" },
      properties =  { floating = true },
      callback = function (c)
-	c.border_width = "0"
+	---c.border_width = "0"
 	awful.placement.centered(c,nil)
      end
    },
@@ -777,25 +624,6 @@ awful.rules.rules = {
 	 awful.titlebar.hide(c)
       end
     },
-    { rule = { class = "Emacs" },
-      callback = function (c)
-	 c.border_width = "0"
-	 awful.titlebar.hide(c)
-      end
-    },
-    { rule = { class = "VirtualBox Machine" },
-      callback = function (c)
-	 c.border_width = "0"
-	 awful.titlebar.hide(c)
-      end
-    },
- ---{ rule = { class = "conky" },
-        --properties = { tag = "00", maximized_vertical = true, maximized_horizontal = true }
-      --  properties = { tag = "00", fullscreen = true },
-        --  callback = function(c)
-         -- c.border_width = "0"
-        --  end
-   -- },
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -805,7 +633,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     size_hints_honor = true
      }
     },
 

@@ -1,7 +1,9 @@
 sys-apps/inxi ~amd64
-# games
+x11-terms/st ~amd64
+# STK
 games-action/supertuxkart ~amd64
 dev-libs/angelscript ~amd64
 # celestia
 sci-astronomy/celestia ~amd64
-
+# sent
+x11-misc/sent ~amd64

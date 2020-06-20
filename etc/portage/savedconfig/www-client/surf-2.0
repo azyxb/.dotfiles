@@ -1,5 +1,5 @@
 /* modifier 0 means no modifier */
-static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
+static int surfuseragent    = 0;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
 static char *scriptfile     = "~/.surf/script.js";
 static char *styledir       = "~/.surf/styles/";
@@ -11,7 +11,7 @@ static Parameter defconfig[ParameterLast] = {
 	SETB(AcceleratedCanvas,  1),
 	SETB(CaretBrowsing,      0),
 	SETV(CookiePolicies,     "@Aa"),
-	SETB(DiskCache,          1),
+	SETB(DiskCache,          0),
 	SETB(DNSPrefetch,        0),
 	SETI(FontSize,           12),
 	SETB(FrameFlattening,    0),
@@ -49,7 +49,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         .v = (const char *[]){ "/bin/sh", "-c", \
              "prop=\"`xprop -id $2 $0 " \
              "| sed \"s/^$0(STRING) = \\(\\\\\"\\?\\)\\(.*\\)\\1$/\\2/\" " \
-             "| xargs -0 printf %b | dmenu`\" &&" \
+             "| xargs -0 printf %b | dmenu `\" &&" \
              "xprop -id $2 -f $1 8s -set $1 \"$prop\"", \
              p, q, winid, NULL \
         } \

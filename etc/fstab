@@ -39,8 +39,9 @@
 #       documentation for details on setting a label. To obtain the UUID, use
 #       the blkid(8) command.
 
-LABEL=bt		/boot				vfat		noauto,noatime,discard						0 0
+LABEL=bt		/boot/EFI			vfat		noauto,noatime,discard						0 0
 LABEL=swp		none				swap		sw,discard							0 0
 LABEL=rt		/				ext4		noatime,discard							0 1
 LABEL=hm		/home				ext4		noatime,discard							0 2
 tmpfs			/var/tmp/portage		tmpfs		size=6G,uid=portage,gid=portage,mode=775,noatime		0 0
+tmpfs			/tmp				tmpfs		rw,nosuid,noatime,nodev,size=4G,mode=1777			0 0
