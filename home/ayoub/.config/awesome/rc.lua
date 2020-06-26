@@ -231,7 +231,7 @@ awful.screen.connect_for_each_screen(function(s)
     )
     awful.tag.add("02", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.tile,
+        layout = awful.layout.suit.floating,
         gap = 5,
         gap_single_client = true,
         screen = s,
@@ -239,28 +239,28 @@ awful.screen.connect_for_each_screen(function(s)
     )
     awful.tag.add("10", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.tile,
+        layout = awful.layout.suit.floating,
         gap = 5,
         screen = s,
         }
     )
      awful.tag.add("11", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.tile,
+        layout = awful.layout.suit.floating,
         gap = 5,
         screen = s,
         }
     )
     awful.tag.add("12", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.tile,
+        layout = awful.layout.suit.floating,
         gap = 5,
         screen = s,
         }
     )
     awful.tag.add("20", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.tile,
+        layout = awful.layout.suit.floating,
         gap = 5,
         screen = s,
         }
@@ -268,14 +268,14 @@ awful.screen.connect_for_each_screen(function(s)
                       
     awful.tag.add("21", {
        -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-       layout = awful.layout.suit.tile,
+       layout = awful.layout.suit.floating,
        gap = 5,
        screen = s,
        }
     )
     awful.tag.add("22", {
        -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-       layout = awful.layout.suit.tile,
+       layout = awful.layout.suit.floating,
        gap = 5,
        screen = s,
        }
@@ -367,6 +367,17 @@ awful.screen.connect_for_each_screen(function(s)
     }
 end)
 -- }}}
+
+-- Firefox fake fullscreen
+-- from here https://stackoverflow.com/questions/44571965/awesome-wm-applications-fullscreen-mode-without-taking-whole-screen
+local no_fullscreen = true
+local rule = { class = "Firefox" }
+client.disconnect_signal("request::geometry", awful.ewmh.geometry)
+client.connect_signal("request::geometry", function(c, context, ...)
+    if not no_fullscreen or context ~= "fullscreen" or not awful.rules.match(c, rule) then
+        awful.ewmh.geometry(c, context, ...)
+    end
+end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -496,10 +507,12 @@ globalkeys = gears.table.join(
     -- firefox, emacs...
     awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("firefox") end,
                 {description = "start firefox", group = "launcher" }),
-    awful.key({ modkey ,"Shift" }, "e",     function ()  awful.util.spawn("st -g 180x60 -e emacs") end,
+    awful.key({ modkey ,"Shift" }, "e",     function ()  awful.util.spawn("emacs") end,
                 {description = "start emacs", group = "launcher" }),
     awful.key({ modkey }, "e",     function ()  awful.util.spawn("st -g 180x60 -e mg") end,
 		{description = "start gm", group = "launcher" }),
+    awful.key({ modkey, "Control" }, "f",     function() no_fullscreen = not no_fullscreen end,
+                {description = "fake fullscreen", group = "tweaks" }),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher" })
@@ -709,13 +722,13 @@ client.connect_signal("request::titlebars", function(c)
     awful.titlebar(c, { height    = 10 }) : setup {
         { -- Left
             ---awful.titlebar.widget.iconwidget(c),
-            awful.titlebar.widget.floatingbutton(c),
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
+            ---{ -- Title
+            ---    align  = "center",
+            ---    widget = awful.titlebar.widget.titlewidget(c)
+            ---},
+            ---buttons = buttons,
+            awful.titlebar.widget.maximizedbutton(c),
+            layout  = wibox.layout.fixed.horizontal()
         },
         { -- Middle
             ---{ -- Title
@@ -723,14 +736,14 @@ client.connect_signal("request::titlebars", function(c)
             ---    widget = awful.titlebar.widget.titlewidget(c)
             ---},
             buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
+            layout  = wibox.layout.flex.horizontal()
         },
         { -- Right
-            ---awful.titlebar.widget.floatingbutton (c),
+            ---awful.titlebar.widget.floatingbutton(c),
             ---awful.titlebar.widget.maximizedbutton(c),
-            ---awful.titlebar.widget.stickybutton   (c),
-            ---awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
+            ---awful.titlebar.widget.stickybutton(c),
+            ---awful.titlebar.widget.ontopbutton(c),
+            awful.titlebar.widget.closebutton(c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal

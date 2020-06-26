@@ -11,11 +11,11 @@
 #      \::/__/        /:/  /       \::/  /        /:/  /   
 #       ~~            \/__/         \/__/         \/__/    
 
-# To change from nano to emacs 
+# editor
 export EDITOR="/usr/bin/mg"
+alias em="emacsclient -a '' -t"
 
 alias c=clear
-alias thekernelinplace="sudo cp arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage.efi" 
 
 # SCIPY
 export SCIPY_PIL_IMAGE_VIEWER=sxiv
@@ -105,7 +105,7 @@ alias start="startx -- vt1"
 
 # The gentoo
 alias up="sudo emerge --update --newuse @world"
-alias ascendio="sudo emerge --sync"
+alias ascendio="sudo emerge --ask=n --sync"
 
 # Printer
 alias starttheprinter="sudo rc-service cupsd start"
@@ -146,15 +146,7 @@ alias pfetch="$HOME/Scripts/pfetch"
 #                  \::/  /        /:/  /       \:\__\                     \/__/        \::/  /        /:/  /       \::/  /   
 #                   \/__/         \/__/         \/__/                                   \/__/         \/__/         \/__/    
 
-# Open nano and make backup of original file. Useful for config files and things you don't want to edit the original
-ebk() {
-    echo "You are making a copy of $1 before you open it. Press enter to continue."
-    read nul
-    cp $1 $1.bak
-    emacs -nw $1
-}
-
-# I mount my usb like a real one
+# usb
 usssb() {
     sudo mount -o rw,users,umask=000 $1 /media/usb
 }
@@ -188,10 +180,8 @@ ex() {
         case $i in
             *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
                    c=(bsdtar xvf);;
-            *.7z)  c=(7z x);;
             *.Z)   c=(uncompress);;
             *.bz2) c=(bunzip2);;
-            *.exe) c=(cabextract);;
             *.gz)  c=(gunzip);;
             *.rar) c=(unrar x);;
             *.xz)  c=(unxz);;
@@ -204,17 +194,6 @@ ex() {
         ((e = e || $?))
     done
     return "$e"
-}
-
-# To cd and ls
-cl() {
-	local dir="$1"
-	local dir="${dir:=$HOME}"
-	if [[ -d "$dir" ]]; then
-		cd "$dir" >/dev/null; ls
-	else
-		echo "bash: cl: $dir: Directory not found"
-	fi
 }
 
 # Take notes
@@ -268,14 +247,9 @@ arecord -vvv -f dat /dev/null
 complete -c man which
 complete -cf sudo
 
-# HELP!!!
-run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
-bind -m vi-insert -x '"\eh": run-help'
-bind -m emacs -x     '"\eh": run-help'
-
 HISTSIZE=100000
 HISTFILESIZE=100000 
 HISTCONTROL=ignoredups:erasedups
 
 # autocd
-shopt -s autocd histappend
+shopt -s autocd histappend extglob

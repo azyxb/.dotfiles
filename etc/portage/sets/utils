@@ -22,3 +22,5 @@ sys-fs/dosfstools
 sys-power/acpilight
 sys-power/thermald
 sys-process/htop
+sys-firmware/intel-microcode
+app-crypt/efitools

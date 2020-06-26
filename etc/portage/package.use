@@ -34,8 +34,8 @@ app-text/djvu jpeg tiff xml
 
 
 # editors
-app-editors/nano minimal -magic -ncurses
-app-editors/emacs -alsa -gamesgif -gtk -imagemagick -jpeg -libxml2 -png -sound -svg -tiff xft -xpm -gif -games -source
+app-editors/emacs X alsa dbus games gif gtk imagemagick jpeg libxml2 png sound svg xft
+app-emacs/emacs-common-gentoo X games
 
 
 # Awesome
