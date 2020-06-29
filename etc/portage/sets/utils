@@ -2,7 +2,6 @@ app-admin/logrotate
 app-admin/sudo
 app-admin/sysklogd
 app-laptop/laptop-mode-tools
-app-portage/genlop
 app-portage/gentoolkit
 app-shells/bash-completion
 app-shells/gentoo-bashcomp
@@ -23,4 +22,5 @@ sys-power/acpilight
 sys-power/thermald
 sys-process/htop
 sys-firmware/intel-microcode
+sys-power/acpi
 app-crypt/efitools

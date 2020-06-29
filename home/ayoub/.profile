@@ -1,5 +1,4 @@
-# LIGHT
-sudo xbacklight -set 45
+export EDITOR=mg
 # HISTORY
 export HISTFILE=/home/$USER/.cache/bash_history
 # ?

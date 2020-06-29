@@ -40,6 +40,7 @@ amdgpu/vegam_me.bin
 amdgpu/vegam_ce.bin
 amdgpu/vega20_vce.bin
 amdgpu/vega20_uvd.bin
+amdgpu/vega20_ta.bin
 amdgpu/vega20_sos.bin
 amdgpu/vega20_smc.bin
 amdgpu/vega20_sdma1.bin
@@ -658,11 +659,11 @@ cxgb3/t3b_psram-1.1.0.bin
 cxgb3/ael2020_twx_edc.bin
 cxgb3/ael2005_twx_edc.bin
 cxgb3/ael2005_opt_edc.bin
-cxgb4/t6fw-1.24.14.0.bin
-cxgb4/t5fw-1.24.14.0.bin
+cxgb4/t6fw-1.24.17.0.bin
+cxgb4/t5fw-1.24.17.0.bin
 cxgb4/t5fw-1.15.37.0.bin
 cxgb4/t5fw-1.14.4.0.bin
-cxgb4/t4fw-1.24.14.0.bin
+cxgb4/t4fw-1.24.17.0.bin
 cxgb4/t4fw-1.15.37.0.bin
 cxgb4/t4fw-1.14.4.0.bin
 cxgb4/configs/t6-config-hashfilter.txt
@@ -1046,8 +1047,11 @@ mediatek/mt7615_n9.bin
 mediatek/mt7615_cr4.bin
 mediatek/mt7610u.bin
 mediatek/mt7610e.bin
+mellanox/mlxsw_spectrum3-30.2007.1168.mfa2
+mellanox/mlxsw_spectrum2-29.2007.1168.mfa2
 mellanox/mlxsw_spectrum2-29.2000.2714.mfa2
 mellanox/mlxsw_spectrum2-29.2000.2308.mfa2
+mellanox/mlxsw_spectrum-13.2007.1168.mfa2
 mellanox/mlxsw_spectrum-13.2000.2714.mfa2
 mellanox/mlxsw_spectrum-13.2000.2308.mfa2
 mellanox/mlxsw_spectrum-13.2000.1886.mfa2
@@ -1103,6 +1107,7 @@ mrvl/sd8797_uapsta.bin
 mrvl/sd8787_uapsta.bin
 mrvl/sd8688_helper.bin
 mrvl/sd8688.bin
+mrvl/prestera/mvsw_prestera_fw-v2.0.img
 mrvl/pcieusb8997_combo_v4.bin
 mrvl/pcieuart8997_combo_v4.bin
 mrvl/pcie8997_wlan_v4.bin
@@ -1939,6 +1944,8 @@ rtl_nic/rtl8153b-2.fw
 rtl_nic/rtl8153a-4.fw
 rtl_nic/rtl8153a-3.fw
 rtl_nic/rtl8153a-2.fw
+rtl_nic/rtl8125b-2.fw
+rtl_nic/rtl8125b-1.fw
 rtl_nic/rtl8125a-3.fw
 rtl_nic/rtl8107e-2.fw
 rtl_nic/rtl8107e-1.fw

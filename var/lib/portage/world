@@ -1,6 +1,5 @@
 app-arch/unrar
 app-arch/unzip
-app-editors/emacs
 app-editors/mg
 app-emulation/qemu
 app-misc/mc
@@ -23,6 +22,7 @@ sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 www-client/firefox
 www-client/lynx
+x11-libs/libnotify
 x11-misc/slock
 x11-misc/xaos
 x11-plugins/vicious

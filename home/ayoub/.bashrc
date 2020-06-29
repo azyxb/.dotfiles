@@ -10,11 +10,6 @@
 #     \:\/:/  /        /:/  /     \:\/:/  /        /:/  /  
 #      \::/__/        /:/  /       \::/  /        /:/  /   
 #       ~~            \/__/         \/__/         \/__/    
-
-# editor
-export EDITOR="/usr/bin/mg"
-alias em="emacsclient -a '' -t"
-
 alias c=clear
 
 # SCIPY
@@ -104,11 +99,8 @@ alias bonsai="/home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2"
 alias start="startx -- vt1"
 
 # The gentoo
-alias up="sudo emerge --update --newuse @world"
-alias ascendio="sudo emerge --ask=n --sync"
-
-# Printer
-alias starttheprinter="sudo rc-service cupsd start"
+alias up="sudo emerge -Nu @world"
+alias ascendio="sudo emaint -a sync"
 
 # The old one
 ##alias datee="sudo ntpdate pool.ntp.org"
@@ -241,6 +233,11 @@ ps -A --sort -rsz -o comm,rsz | awk 'NR<=15 {printf "%-20s %.2f MB\n", $1, $2/10
 # test microphone
 test-microphone() {
 arecord -vvv -f dat /dev/null
+}
+
+# tabs to 4 spaces
+tab24spaces() {
+sed -e 's/\t/    /g' $1
 }
 
 # To complete
