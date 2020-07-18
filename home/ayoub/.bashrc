@@ -77,9 +77,6 @@ alias nox="xset dpms force off"
 # Get rid of command not found
 alias cd..='cd ..'
 
-# Firewall
-alias showfirewall="sudo iptables -L -n"
-
 # Do not delete / or prompt if deleting more than 3 files at a time
 alias rm='rm -I --preserve-root'
 
@@ -99,11 +96,11 @@ alias bonsai="/home/ayoub/Scripts/bonsai/bonsai.sh -l -b 2"
 alias start="startx -- vt1"
 
 # The gentoo
-alias up="sudo emerge -Nu @world"
-alias ascendio="sudo emaint -a sync"
+alias up="su -c 'emerge -Nu @world'"
+alias ascendio="su -c 'emaint -a sync'"
 
 # The old one
-##alias datee="sudo ntpdate pool.ntp.org"
+##alias datee="ntpdate pool.ntp.org"
 
 # X
 alias whox="ps -fC X"
@@ -115,13 +112,8 @@ alias infoo="/home/ayoub/Scripts/info.sh"
 alias moon="curl wttr.in/Moon"
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
-# SSD temperature
-alias thetempofthessd="sudo smartctl /dev/sda -a | grep -i Temp"
-
-# portage is great
-alias accio="sudo emerge"
+# Do not sync more than one time a day, who needs to?
 alias lasttime="cat /var/db/repos/gentoo/metadata/timestamp.chk"
-##alias accio="sudo pacman -S"
 
 # pfetch
 alias pfetch="$HOME/Scripts/pfetch"
@@ -140,12 +132,17 @@ alias pfetch="$HOME/Scripts/pfetch"
 
 # usb
 usssb() {
-    sudo mount -o rw,users,umask=000 $1 /media/usb
+    su -c 'mount -o rw,users,umask=000 $1 /media/usb'
 }
 
 # LaTex
 pdf() {
     pdflatex $1 && pkill -HUP mupdf
+}
+
+# compile
+compilation() {
+    gcc `pkg-config --cflags gtk+-3.0 webkit2gtk-4.0` -o browser browser.c `pkg-config --libs gtk+-3.0 webkit2gtk-4.0`
 }
 
 # djvu to pdf
@@ -154,38 +151,68 @@ djvu2pdf() {
 }
 
 # ARCHIVE EXTRACTION
-# usage: ex <file>
-ex() {
-    local c e i
+# usage: extract <file>
+extract() {
+  local xcmd rc fsobj
 
-    (($#)) || return
+  (($#)) || return
+  rc=0
+  for fsobj; do
+    xcmd=''
 
-    for i; do
-        c=''
-        e=1
+    if [[ ! -r ${fsobj} ]]; then
+      printf -- '%s\n' "$0: file is unreadable: '${fsobj}'" >&2
+      continue
+    fi
 
-        if [[ ! -r $i ]]; then
-            echo "$0: file is unreadable: \`$i'" >&2
-            continue
-        fi
+    [[ -e ./"${fsobj#/}" ]] && fsobj="./${fsobj#/}"
 
-        case $i in
-            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
-                   c=(bsdtar xvf);;
-            *.Z)   c=(uncompress);;
-            *.bz2) c=(bunzip2);;
-            *.gz)  c=(gunzip);;
-            *.rar) c=(unrar x);;
-            *.xz)  c=(unxz);;
-            *.zip) c=(unzip);;
-            *)     echo "$0: unrecognized file extension: \`$i'" >&2
-                   continue;;
-        esac
+    case ${fsobj} in
+      (*.cbt|*.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+                xcmd=(bsdtar xvf)
+      ;;
+      (*.7z*|*.arj|*.cab|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.rpm|*.udf|*.wim|*.xar)
+                xcmd=(7z x)
+      ;;
+      (*.ace|*.cba)
+                xcmd=(unace x)
+      ;;
+      (*.cbr|*.rar)
+                xcmd=(unrar x)
+      ;;
+      (*.cbz|*.epub|*.zip)
+                xcmd=(unzip)
+      ;;
+      (*.cpio)
+                cpio -id < "${fsobj}"
+                rc=$(( rc + "${?}" ))
+                continue
+      ;;
+      (*.cso)
+                ciso 0 "${fsobj}" "${fsobj}".iso
+                extract "${fsobj}".iso
+                rm -rf "${fsobj:?}"
+                rc=$(( rc + "${?}" ))
+                continue
+      ;;
+      (*.arc)   xcmd=(arc e);;
+      (*.bz2)   xcmd=(bunzip2);;
+      (*.exe)   xcmd=(cabextract);;
+      (*.gz)    xcmd=(gunzip);;
+      (*.lzma)  xcmd=(unlzma);;
+      (*.xz)    xcmd=(unxz);;
+      (*.Z|*.z) xcmd=(uncompress);;
+      (*.zpaq)  xcmd=(zpaq x);;
+      (*)       printf -- '%s\n' "$0: unrecognized file extension: '${fsobj}'" >&2
+                continue
+      ;;
+    esac
 
-        command "${c[@]}" "$i"
-        ((e = e || $?))
-    done
-    return "$e"
+    command "${xcmd[@]}" "${fsobj}"
+    rc=$(( rc + "${?}" ))
+  done
+  (( rc > 0 )) && return "${rc}"
+  return 0
 }
 
 # Take notes
@@ -242,7 +269,7 @@ sed -e 's/\t/    /g' $1
 
 # To complete
 complete -c man which
-complete -cf sudo
+#complete -cf sudo
 
 HISTSIZE=100000
 HISTFILESIZE=100000 

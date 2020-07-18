@@ -5,3 +5,5 @@ sys-firmware/intel-microcode intel-ucode
 # unrar
 app-arch/unrar unRAR
 
+# required by google-chrome (argument)
+>=www-client/google-chrome-83.0.4103.116 google-chrome

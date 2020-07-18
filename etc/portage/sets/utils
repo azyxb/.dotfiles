@@ -1,11 +1,9 @@
 app-admin/logrotate
-app-admin/sudo
 app-admin/sysklogd
 app-laptop/laptop-mode-tools
 app-portage/gentoolkit
 app-shells/bash-completion
 app-shells/gentoo-bashcomp
-app-text/tree
 dev-vcs/git
 media-sound/alsa-utils
 media-tv/v4l-utils

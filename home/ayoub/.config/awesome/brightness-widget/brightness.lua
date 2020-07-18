@@ -13,8 +13,8 @@ local watch = require("awful.widget.watch")
 local spawn = require("awful.spawn")
 
 local GET_BRIGHTNESS_CMD = "xbacklight -get"
-local INC_BRIGHTNESS_CMD = "sudo xbacklight -inc 10"
-local DEC_BRIGHTNESS_CMD = "sudo xbacklight -dec 10"
+local INC_BRIGHTNESS_CMD = "xbacklight -inc 10"
+local DEC_BRIGHTNESS_CMD = "xbacklight -dec 10"
 
 local widget = {}
 

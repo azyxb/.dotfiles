@@ -26,7 +26,7 @@ test -z "$(find $H -mtime +${DAYS} )" && exit
 if [ -f "${1}" ]; then
 	MYHOSTS=$(cat "${1}")
 else
-	MYHOSTS="127.0.0.1 io.jupiter io localhost"
+	MYHOSTS=""
 fi
 
 HOSTSSRC="
@@ -83,7 +83,7 @@ sed -i -e '/^[[:space:]]*$/d' $TMP
 echo "[zerohosts $VERSION]: write /etc/hosts"
 cat << EOF > $H
 $(date '+# %Y-%m-%d %H:%M:%S')
-127.0.0.1 localhost
+127.0.0.1 io.jupiter io localhost
 ::1 localhost
 0.0.0.0 0.0.0.0
 ::      ::

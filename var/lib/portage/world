@@ -1,5 +1,7 @@
+app-arch/p7zip
 app-arch/unrar
 app-arch/unzip
+app-crypt/mit-krb5
 app-editors/mg
 app-emulation/qemu
 app-misc/mc
@@ -14,14 +16,13 @@ media-gfx/gimp
 media-gfx/scrot
 media-gfx/sxiv
 media-video/mpv
-net-irc/weechat
 net-p2p/rtorrent
 sci-astronomy/celestia
 sci-libs/scipy
+sys-apps/flatpak
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
-www-client/firefox
-www-client/lynx
+www-client/google-chrome
 x11-libs/libnotify
 x11-misc/slock
 x11-misc/xaos

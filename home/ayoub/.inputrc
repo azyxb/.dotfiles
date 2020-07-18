@@ -16,6 +16,10 @@ set menu-complete-display-prefix On
 
 # case-insensitive
 set completion-ignore-case On
+set completion-map-case On
 
 # Del key
 set enable-keypad On
+
+# blink
+set blink-matching-paren On

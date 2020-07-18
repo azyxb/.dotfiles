@@ -231,7 +231,7 @@ awful.screen.connect_for_each_screen(function(s)
     )
     awful.tag.add("02", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.floating,
+        layout = awful.layout.suit.tile,
         gap = 5,
         gap_single_client = true,
         screen = s,
@@ -239,28 +239,28 @@ awful.screen.connect_for_each_screen(function(s)
     )
     awful.tag.add("10", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.floating,
+        layout = awful.layout.suit.tile,
         gap = 5,
         screen = s,
         }
     )
      awful.tag.add("11", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.floating,
+        layout = awful.layout.suit.tile,
         gap = 5,
         screen = s,
         }
     )
     awful.tag.add("12", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.floating,
+        layout = awful.layout.suit.tile,
         gap = 5,
         screen = s,
         }
     )
     awful.tag.add("20", {
         -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-        layout = awful.layout.suit.floating,
+        layout = awful.layout.suit.tile,
         gap = 5,
         screen = s,
         }
@@ -268,14 +268,14 @@ awful.screen.connect_for_each_screen(function(s)
                       
     awful.tag.add("21", {
        -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-       layout = awful.layout.suit.floating,
+       layout = awful.layout.suit.tile,
        gap = 5,
        screen = s,
        }
     )
     awful.tag.add("22", {
        -- icon = "/home/ayoub/.icons/Flat-Remix-Dark/emblems/symbolic/emblem-ok-symbolic.svg",
-       layout = awful.layout.suit.floating,
+       layout = awful.layout.suit.tile,
        gap = 5,
        screen = s,
        }
@@ -304,6 +304,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top",height = 18, opacity = 1, width = 1920, screen = s })
+    s.mywibox.visible = not s.mywibox.visible
     -- Registring vicious widgets
     -- For example: vicious.register(widget, wtype, format, interval, warg)
     -- memory
@@ -367,17 +368,6 @@ awful.screen.connect_for_each_screen(function(s)
     }
 end)
 -- }}}
-
--- Firefox fake fullscreen
--- from here https://stackoverflow.com/questions/44571965/awesome-wm-applications-fullscreen-mode-without-taking-whole-screen
-local no_fullscreen = true
-local rule = { class = "Firefox" }
-client.disconnect_signal("request::geometry", awful.ewmh.geometry)
-client.connect_signal("request::geometry", function(c, context, ...)
-    if not no_fullscreen or context ~= "fullscreen" or not awful.rules.match(c, rule) then
-        awful.ewmh.geometry(c, context, ...)
-    end
-end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -499,24 +489,28 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 10%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 10%-") end),
     awful.key({ }, "XF86AudioMute",  function () awful.util.spawn("amixer set Master toggle") end ),
-    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("sudo xbacklight -dec 10") end),
-    awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("sudo xbacklight -inc 10") end ),
+    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("xbacklight -dec 10") end),
+    awful.key({ }, "XF86MonBrightnessUp",  function () awful.util.spawn("xbacklight -inc 10") end ),
     awful.key({ }, "XF86Sleep",  function () awful.util.spawn("xset dpms force off") end ),
     awful.key({ }, "XF86AudioMicMute", function () awful.util.spawn("amixer set Capture toggle") end),
     awful.key({ }, "Print", function () awful.util.spawn("scrot") end ),
-    -- firefox, emacs...
-    awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("firefox") end,
-                {description = "start firefox", group = "launcher" }),
-    awful.key({ modkey ,"Shift" }, "t",     function ()  awful.util.spawn_with_shell('notify-send "sensors" "$(sensors)"') end,
+    -- Simplebrowser, emacs...
+    awful.key({ modkey ,"Shift" }, "f",     function ()  awful.util.spawn("simplebrowser") end,
+                {description = "start DuckDuckGo", group = "launcher" }),
+    awful.key({ modkey ,"Shift" }, "s",     function ()  awful.util.spawn_with_shell('notify-send "sensors" "$(sensors -A)"') end,
                 {description = "sensors", group = "notifications" }),
+    awful.key({ modkey ,"Shift" }, "v",     function ()  awful.util.spawn_with_shell('notify-send "volume" "$(amixer sget Master)"') end,
+                {description = "volume level", group = "notifications" }),
     awful.key({ modkey ,"Shift" }, "a",     function ()  awful.util.spawn_with_shell('notify-send "acpi" "$(acpi)"') end,
                 {description = "acpi", group = "notifications" }),
     awful.key({ modkey ,"Shift" }, "u",     function ()  awful.util.spawn_with_shell('notify-send "uptime" "$(uptime)"') end,
                 {description = "uptime", group = "notifications" }),
+    awful.key({ modkey ,"Shift" }, "d",     function ()  awful.util.spawn_with_shell('notify-send "Disk space" "$(df -h --output=source,target,used,size,pcent)"') end,
+                {description = "disk", group = "notifications" }),
+    awful.key({ modkey ,"Shift" }, "p",     function ()  awful.util.spawn_with_shell('notify-send "CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)"') end,
+                {description = "cpu", group = "notifications" }),
     awful.key({ modkey }, "e",     function ()  awful.util.spawn("st -g 180x60 -e mg") end,
 		{description = "start gm", group = "launcher" }),
-    awful.key({ modkey, "Control" }, "f",     function() no_fullscreen = not no_fullscreen end,
-                {description = "fake fullscreen", group = "tweaks" }),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher" })
@@ -635,12 +629,6 @@ awful.rules.rules = {
 	awful.placement.centered(c,nil)
      end
    },
-    { rule = { class = "Firefox" },
-      callback = function (c)
-	 c.border_width = "0"
-	 awful.titlebar.hide(c)
-      end
-    },
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -658,7 +646,6 @@ awful.rules.rules = {
     -- Floating clients.
     { rule_any = {
         instance = {
-          "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
         },
         class = {
@@ -685,10 +672,6 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
     },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 

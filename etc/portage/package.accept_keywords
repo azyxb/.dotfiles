@@ -1,5 +1,6 @@
 sys-apps/inxi ~amd64
 x11-terms/st ~amd64
+sys-apps/proot ~amd64
 # STK
 games-action/supertuxkart ~amd64
 dev-libs/angelscript ~amd64
